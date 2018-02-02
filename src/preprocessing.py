@@ -9,6 +9,10 @@ from keras.models import Model
 from keras.utils import plot_model
 import numpy as np
 
+# Borrows from Keras MNIST CNN example 
+# Run this to generate the images => features stored in `data` directory
+
+
 batch_size = 128
 num_classes = 10
 epochs = 12
@@ -43,8 +47,8 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 
 
 # pre-trained MNIST model
-full_model = keras.models.load_model('mnist_cnn.h5')
-plot_model(full_model, to_file='mnist_model.png')
+full_model = keras.models.load_model('../models/mnist_cnn.h5')
+plot_model(full_model, to_file='../models/mnist_model.png')
 
 feature_extractor = K.function([full_model.layers[0].input, K.learning_phase()],
                                [full_model.layers[6].output])
@@ -86,8 +90,8 @@ features_test[i:] = feature_extractor([x_test[i:], 0])[0]
 cnn_output_test[i:] = full_model.predict_on_batch(x_test[i:])
 
 # write out to file
-np.savetxt("mnist_train_features.csv", features_train, delimiter=",")
-np.savetxt("mnist_train_cnn_output.csv", cnn_output_train, delimiter=",")
-np.savetxt("mnist_test_features.csv", features_test, delimiter=",")
-np.savetxt("mnist_test_cnn_output.csv", cnn_output_test, delimiter=",")
+np.savetxt("../data//mnist_train_features.csv", features_train, delimiter=",")
+np.savetxt("../data/mnist_train_cnn_output.csv", cnn_output_train, delimiter=",")
+np.savetxt("../data/mnist_test_features.csv", features_test, delimiter=",")
+np.savetxt("../data/mnist_test_cnn_output.csv", cnn_output_test, delimiter=",")
 
