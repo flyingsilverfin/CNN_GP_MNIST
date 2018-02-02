@@ -90,7 +90,7 @@ features_test[i:] = feature_extractor([x_test[i:], 0])[0]
 cnn_output_test[i:] = full_model.predict_on_batch(x_test[i:])
 
 # write out to file
-np.savetxt("../data//mnist_train_features.csv", features_train, delimiter=",")
+np.savetxt("../data/mnist_train_features.csv", features_train, delimiter=",")
 np.savetxt("../data/mnist_train_cnn_output.csv", cnn_output_train, delimiter=",")
 np.savetxt("../data/mnist_test_features.csv", features_test, delimiter=",")
 np.savetxt("../data/mnist_test_cnn_output.csv", cnn_output_test, delimiter=",")
