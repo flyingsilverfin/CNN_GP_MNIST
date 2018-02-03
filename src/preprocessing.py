@@ -8,6 +8,7 @@ from keras import backend as K
 from keras.models import Model
 from keras.utils import plot_model
 import numpy as np
+import os
 
 # Borrows from Keras MNIST CNN example 
 # Run this to generate the images => features stored in `data` directory
@@ -88,6 +89,8 @@ for i in range(0, x_test.shape[0] - batch_size, batch_size):
 # handle last incomplete batch
 features_test[i:] = feature_extractor([x_test[i:], 0])[0]
 cnn_output_test[i:] = full_model.predict_on_batch(x_test[i:])
+
+os.mkdir('../data')
 
 # write out to file
 np.savetxt("../data/mnist_train_features.csv", features_train, delimiter=",")
