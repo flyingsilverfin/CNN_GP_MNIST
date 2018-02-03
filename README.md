@@ -4,8 +4,12 @@
 
 ## Requirements
 
+* Python 3.5+ 
+  * On Ubuntu 14.04 use http://ppa.launchpad.net/jonathonf/ PPA for the python 3.6
+
 * Keras + Tensorflow
-* h5py, pydot
+* tkinter-3 (for matplotlib)
+* `pip install h5py pydot pytest matplotlib python3-tk`
 * GPFlow (submodule included)
   * Install with `pip install .` in `deps/GPflow`
 
