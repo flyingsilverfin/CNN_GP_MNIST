@@ -197,7 +197,7 @@ class GPFlow_GP_Classification(GPFlow_GP):
         print("Configuring GPFlow Classification")
         gpflow = self.gpflow
         self.kernel = gpflow.kernels.RBF(input_dim=self.limit_features)
-        self.kernel += gpflow.kernels.White(input_dim=self.limit_features, variance=0.01)
+        self.kernel += gpflow.kernels.White(input_dim=self.limit_features, variance=0.5)
 
         ys = np.argmax(self.ys_train, axis = 1) # convert back from one-hot to integer labeled classes
         self.model = gpflow.models.SVGP(self.xs_train, ys, 
@@ -205,7 +205,7 @@ class GPFlow_GP_Classification(GPFlow_GP):
                                         likelihood=gpflow.likelihoods.MultiClass(self.limit_classes),
                                         Z=self.xs_train[::50].copy(),
                                         num_latent = self.limit_classes,
-					minibatch_size = 10000,
+					                    minibatch_size = 7500,
                                         whiten=True,
                                         q_diag=True)
             
@@ -225,6 +225,9 @@ class GPFlow_GP_Classification(GPFlow_GP):
         print(self.optimiser)
 
     def plot_multiclass_model(self, m):
+        if m.X.shape[1] > 1:
+            print(">1 feature being used, not plotting")
+            return
         f = plt.figure(figsize=(12,6))
         a1 = f.add_axes([0.05, 0.05, 0.9, 0.6])
         a2 = f.add_axes([0.05, 0.7, 0.9, 0.1])
@@ -271,8 +274,7 @@ class GPFlow_GP_Classification(GPFlow_GP):
             #superclass impl
             self.plot_multiclass_model(self.model)
     
-        print(self.mean)
-        print(self.var)
+        return (self.mean, self.var)
 
 
 if __name__ == "__main__":
@@ -283,10 +285,11 @@ if __name__ == "__main__":
 
     ys_train, ys_test = get_mnist_classes()
 
-    gp = GPFlow_GP_Classification(xs_train, ys_train, limit_features = 1, limit_classes = 10)
+    gp = GPFlow_GP_Classification(xs_train, ys_train, limit_features = 128, limit_classes = 10)
     gp.do_configure()
     gp.print_configuration()
     gp.train()
     gp.print_configuration()
-    gp.predict(gp._filter(xs_test, ys_test)[0])
-    input()
+    mu, var =  gp.predict(gp._filter(xs_test, ys_test)[0])
+    np.savetxt('data/GP_mu_full_z50_batch7-5k_var0.5.csv', mu, delimiter=',')
+    np.savetxt('data/GP_var_full_z50_batch7-5k_var0.5.csv', var, delimiter=',')
