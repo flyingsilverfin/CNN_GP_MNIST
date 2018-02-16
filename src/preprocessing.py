@@ -90,8 +90,10 @@ for i in range(0, x_test.shape[0] - batch_size, batch_size):
 features_test[i:] = feature_extractor([x_test[i:], 0])[0]
 cnn_output_test[i:] = full_model.predict_on_batch(x_test[i:])
 
-os.mkdir('data')
-
+try:
+    s.mkdir('data')
+except Exception:
+    print("Not creating data/ as it exists")
 # write out to file
 np.savetxt("data/mnist_train_features.csv", features_train, delimiter=",")
 np.savetxt("data/mnist_train_cnn_output.csv", cnn_output_train, delimiter=",")
