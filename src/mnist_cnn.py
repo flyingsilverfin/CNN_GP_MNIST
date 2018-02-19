@@ -28,7 +28,7 @@ class CNN_MNIST(object):
                 with tf.Session().as_default() as sess:
                     K.set_session(sess)
                     model = keras.models.load_model(self.model_path)
-                    cnn_probs = model.predict_on_batch(images)
+                    cnn_probs = model.predict(images)
                     return cnn_probs
                     #cnn_predicted_classes = np.argmax(cnn_test_probs, axis=1)
                     #print("Num CNN incorrect:", np.count_nonzero(cnn_predicted_classes != correct_classes))
