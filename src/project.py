@@ -156,9 +156,9 @@ class GPFlow_GP_Regression(GPFlow_GP):
         self.model = gpflow.models.SVGP(self.xs_train, self.ys_train, 
                                         self.kernel, 
                                         likelihood=gpflow.likelihoods.Gaussian(),
-                                        Z=self.xs_train[::50],
+                                        Z=self.xs_train[::40],
                                         num_latent = 10,
-                                        minibatch_size=100)
+                                        minibatch_size=5000)
         self.model.feature.trainable = False
 
         self.optimiser = gpflow.train.ScipyOptimizer()
