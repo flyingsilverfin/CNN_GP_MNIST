@@ -25,8 +25,10 @@ class GP_MNIST_SVGP(object):
                  q_diag=True,
                  minibatch=8000,
                  whitevar_trainable=False,
-                 feat_trainable=True
+                 feat_trainable=True,
+                 name="GP classifier"
                  ):
+        self.name = name
 
         if xs_train is None and ys_train is None:
             # hardcoded default

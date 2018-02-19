@@ -14,7 +14,8 @@ from cleverhans.utils_keras import KerasModelWrapper
 # TODO remove hard coded images sizes
 
 class CNN_MNIST(object):
-    def __init__(self, model_path='../models/mnist_cnn.h5', isolate=False):
+    def __init__(self, model_path='../models/mnist_cnn.h5', isolate=False, name="CNN classifier"):
+        self.name = name
         self.isolate = isolate
         self.model_path = model_path
         if not isolate:

@@ -2,7 +2,8 @@ from sklearn import svm
 
 
 class SVM_MNIST(object):
-    def __init__(self, xs_train, ys_train, nb_classes):
+    def __init__(self, xs_train, ys_train, nb_classes, name="SVM classifier"):
+        self.name = name
 
         self.model = svm.SVC(decision_function_shape='ovo', probability=True)
 

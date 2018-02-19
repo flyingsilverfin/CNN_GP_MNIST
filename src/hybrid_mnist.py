@@ -12,10 +12,9 @@ class Hybrid_MNIST(object):
     def __init__(self, accept_cnn_tolerance=0.5, stronger_criterion=False):
         self.accept_cnn_tolerance = accept_cnn_tolerance
         self.stronger_criterion = stronger_criterion
-    
-    
+        self.name = "Hybrid model tol=" + accept_cnn_tolerance + " strong=" + self.stronger_criterion
 
-    def combine_predictions(self,cnn_probs, gp_mu, gp_var, verbose=False):
+    def combine_predictions(self, cnn_probs, gp_mu, gp_var, verbose=False):
         assert (cnn_probs.shape[0] == gp_mu.shape[0] == gp_var.shape[0])
         decisions = []
         decision_probs = []
@@ -72,4 +71,3 @@ class Hybrid_MNIST(object):
                     decision_probs.append(mu)
                     decision_vars.append(var)
         return (np.array(decisions), np.array(decision_probs), np.array(decision_vars))
-        
