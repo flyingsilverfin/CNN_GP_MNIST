@@ -9,8 +9,6 @@ import numpy as np
 
 from mnist_preprocessing import get_mnist_data
 
-os.environ["CUDA_VISIBLE_DEVICES"] = ''
-
 
 class GP_MNIST_SVGP(object):
     def __init__(self, 
