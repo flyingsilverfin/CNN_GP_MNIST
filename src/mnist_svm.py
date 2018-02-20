@@ -1,5 +1,6 @@
 from sklearn import svm
-import cPickle
+import pickle
+import os
 
 class SVM_MNIST(object):
     def __init__(self, xs_train, ys_train, nb_classes, name="SVM classifier", save_dir='../models/svm/', retrain=False):
@@ -17,12 +18,12 @@ class SVM_MNIST(object):
             print("Finished Training SVM")
             print("Saving pickle to", save_path)
             with open(save_path, 'wb') as f:
-                cPickle.dump(self.model, f)    
+                pickle.dump(self.model, f)    
 
         else:
             print("Loading SVM from", save_path)
             with open(save_path, 'rb') as f:
-                self.model = cPickle.load(f)
+                self.model = pickle.load(f)
 
     def predict_batch(self, features_batch):
         return self.model.predict(features_batch)

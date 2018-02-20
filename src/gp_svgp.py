@@ -65,7 +65,7 @@ class GP_MNIST_SVGP(object):
             np.save(save_path, params)
         else:
             print("Loading GP model from file", save_path)
-            params = np.load(save_path)
+            params = np.load(save_path).item()
             self.model.assign(params)
 
     """
