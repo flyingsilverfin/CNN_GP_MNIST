@@ -26,7 +26,9 @@ class GP_MNIST_SVGP(object):
                  minibatch=8000,
                  whitevar_trainable=False,
                  feat_trainable=True,
-                 name="GP classifier"):
+                 name="GP classifier",
+                 save_dir='../models/gp/',
+                 retrain=False):
         self.name = name
 
         if xs_train is None and ys_train is None:
@@ -52,8 +54,21 @@ class GP_MNIST_SVGP(object):
         self.model.kern.white.variance.trainable = whitevar_trainable
         self.model.feature.trainable = feat_trainable
 
-        opt = gpflow.train.ScipyOptimizer()
-        opt.minimize(self.model)
+        print("Initialized", name)
+
+        save_name = self.name + "_model.npy"
+        save_path = save_dir + save_name
+        if not retrain:
+            if save_name not in os.listdir(save_dir):
+                raise Exception("Saved model at " + save_path + " does not exist")
+            params = np.load(save_path)
+            self.model.assign(params)
+        else:
+            opt = gpflow.train.ScipyOptimizer()
+            opt.minimize(self.model)
+            print("Saving trained model to", save_path)
+            params = self.model.read_trainables()
+            np.save(save_path, params)
 
 
     """
