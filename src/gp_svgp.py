@@ -58,18 +58,17 @@ class GP_MNIST_SVGP(object):
 
         save_name = self.name + "_model.npy"
         save_path = save_dir + save_name
-        if not retrain:
-            if save_name not in os.listdir(save_dir):
-                raise Exception("Saved model at " + save_path + " does not exist")
-            params = np.load(save_path)
-            self.model.assign(params)
-        else:
+        if retrain or save_name not in os.listdir(save_dir):
+            print("Training GP from scratch")
             opt = gpflow.train.ScipyOptimizer()
             opt.minimize(self.model)
             print("Saving trained model to", save_path)
             params = self.model.read_trainables()
             np.save(save_path, params)
-
+        else:
+            print("Loading GP model from file", save_path)
+            params = np.load(save_path)
+            self.model.assign(params)
 
     """
     params:
