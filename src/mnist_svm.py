@@ -13,4 +13,4 @@ class SVM_MNIST(object):
         self.model.fit(xs_train, ys_train)
 
     def predict_batch(self, features_batch):
-        return self.model.predict(adv_fsgm_features)
+        return self.model.predict(features_batch)
