@@ -38,11 +38,16 @@ class GP_MNIST_SVGP(object):
         # don't need 1-hot encoding for GP
         if nb_classes == ys_train.shape[-1]:
             ys_train = np.argmax(ys_train, axis=1)
-        
 
+        if type(kernel) == list:
+            kern = kernel[0](input_dim=nb_feats)
+            for k in kernel[1:]:
+                kern = kern * k(input_dim=nb_feats)
+            kernel = kern
+        
         self.model = gpflow.models.SVGP(
             xs_train, ys_train,
-            kern=kernel(input_dim=nb_feats) + gpflow.kernels.White(input_dim=nb_feats, variance=whitevar),
+            kern=kern + gpflow.kernels.White(input_dim=nb_feats, variance=whitevar),
             likelihood=gpflow.likelihoods.MultiClass(nb_classes),
             Z=xs_train[::latent_split].copy(), 
             num_latent=nb_classes, 
