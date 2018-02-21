@@ -39,6 +39,7 @@ class GP_MNIST_SVGP(object):
         if nb_classes == ys_train.shape[-1]:
             ys_train = np.argmax(ys_train, axis=1)
         
+
         self.model = gpflow.models.SVGP(
             xs_train, ys_train,
             kern=kernel(input_dim=nb_feats) + gpflow.kernels.White(input_dim=nb_feats, variance=whitevar),
