@@ -43,8 +43,9 @@ class GP_MNIST_SVGP(object):
             kern = kernel[0](input_dim=nb_feats)
             for k in kernel[1:]:
                 kern = kern * k(input_dim=nb_feats)
-            kernel = kern
-        
+        else:
+            kern = kernel(input_dim=nb_feats)
+
         self.model = gpflow.models.SVGP(
             xs_train, ys_train,
             kern=kern + gpflow.kernels.White(input_dim=nb_feats, variance=whitevar),
