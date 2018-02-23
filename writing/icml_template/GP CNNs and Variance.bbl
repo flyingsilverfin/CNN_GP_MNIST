@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -13,5 +13,125 @@ Basu, Saikat, Karki, Manohar, Ganguly, Sangram, DiBiano, Robert, Mukhopadhyay,
   and deep belief nets.
 \newblock \emph{Neural Processing Letters}, 45\penalty0 (3):\penalty0 855--867,
   2017.
+
+\bibitem[Blundell et~al.(2015)Blundell, Cornebise, Kavukcuoglu, and
+  Wierstra]{blundell2015weight}
+Blundell, Charles, Cornebise, Julien, Kavukcuoglu, Koray, and Wierstra, Daan.
+\newblock Weight uncertainty in neural networks.
+\newblock \emph{arXiv preprint arXiv:1505.05424}, 2015.
+
+\bibitem[Bradshaw et~al.(2017)Bradshaw, Matthews, and Ghahramani]{Bradshaw2017}
+Bradshaw, John, Matthews, Alexander G. de~G., and Ghahramani, Zoubin.
+\newblock {Adversarial Examples, Uncertainty, and Transfer Testing Robustness
+  in Gaussian Process Hybrid Deep Networks}.
+\newblock pp.\  1--33, 2017.
+\newblock URL \url{http://arxiv.org/abs/1707.02476}.
+
+\bibitem[Bridle(1990)]{bridle1990probabilistic}
+Bridle, John~S.
+\newblock Probabilistic interpretation of feedforward classification network
+  outputs, with relationships to statistical pattern recognition.
+\newblock In \emph{Neurocomputing}, pp.\  227--236. Springer, 1990.
+
+\bibitem[Chollet et~al.(2015)]{chollet2015keras}
+Chollet, Fran\c{c}ois et~al.
+\newblock Keras.
+\newblock \url{https://github.com/keras-team/keras}, 2015.
+
+\bibitem[Gal \& Ghahramani(2016)Gal and Ghahramani]{gal2016dropout}
+Gal, Yarin and Ghahramani, Zoubin.
+\newblock Dropout as a bayesian approximation: Representing model uncertainty
+  in deep learning.
+\newblock In \emph{international conference on machine learning}, pp.\
+  1050--1059, 2016.
+
+\bibitem[Goodfellow et~al.(2014)Goodfellow, Shlens, and
+  Szegedy]{goodfellow2014explaining}
+Goodfellow, Ian~J, Shlens, Jonathon, and Szegedy, Christian.
+\newblock Explaining and harnessing adversarial examples.
+\newblock \emph{arXiv preprint arXiv:1412.6572}, 2014.
+
+\bibitem[Hensman et~al.(2015)Hensman, Matthews, and
+  Ghahramani]{hensman2015scalable}
+Hensman, James, Matthews, Alexander G de~G, and Ghahramani, Zoubin.
+\newblock Scalable variational gaussian process classification.
+\newblock 2015.
+
+\bibitem[Krizhevsky et~al.(2012)Krizhevsky, Sutskever, and
+  Hinton]{krizhevsky2012imagenet}
+Krizhevsky, Alex, Sutskever, Ilya, and Hinton, Geoffrey~E.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In \emph{Advances in neural information processing systems}, pp.\
+  1097--1105, 2012.
+
+\bibitem[LeCun et~al.(1998)LeCun, Bottou, Bengio, and
+  Haffner]{lecun1998gradient}
+LeCun, Yann, Bottou, L{\'e}on, Bengio, Yoshua, and Haffner, Patrick.
+\newblock Gradient-based learning applied to document recognition.
+\newblock \emph{Proceedings of the IEEE}, 86\penalty0 (11):\penalty0
+  2278--2324, 1998.
+
+\bibitem[MacKay~David(1992)]{mackay1992practical}
+MacKay~David, JC.
+\newblock A practical bayesian framework for backprop networks.
+\newblock \emph{Neural computation}, 1992.
+
+\bibitem[Matthews et~al.(2017)Matthews, {van der Wilk}, Nickson, Fujii,
+  {Boukouvalas}, {Le{\'o}n-Villagr{\'a}}, Ghahramani, and Hensman]{GPflow2017}
+Matthews, Alexander G. de~G., {van der Wilk}, Mark, Nickson, Tom, Fujii,
+  Keisuke., {Boukouvalas}, Alexis, {Le{\'o}n-Villagr{\'a}}, Pablo, Ghahramani,
+  Zoubin, and Hensman, James.
+\newblock {{GP}flow: A {G}aussian process library using {T}ensor{F}low}.
+\newblock \emph{Journal of Machine Learning Research}, 18\penalty0
+  (40):\penalty0 1--6, apr 2017.
+\newblock URL \url{http://jmlr.org/papers/v18/16-537.html}.
+
+\bibitem[Papernot et~al.(2016{\natexlab{a}})Papernot, Goodfellow, Sheatsley,
+  Feinman, and McDaniel]{papernot2016cleverhans}
+Papernot, Nicolas, Goodfellow, Ian, Sheatsley, Ryan, Feinman, Reuben, and
+  McDaniel, Patrick.
+\newblock cleverhans v1.0.0: an adversarial machine learning library.
+\newblock \emph{arXiv preprint arXiv:1610.00768}, 2016{\natexlab{a}}.
+
+\bibitem[Papernot et~al.(2016{\natexlab{b}})Papernot, McDaniel, Jha,
+  Fredrikson, Celik, and Swami]{papernot2016limitations}
+Papernot, Nicolas, McDaniel, Patrick, Jha, Somesh, Fredrikson, Matt, Celik,
+  Z~Berkay, and Swami, Ananthram.
+\newblock The limitations of deep learning in adversarial settings.
+\newblock In \emph{Security and Privacy (EuroS\&P), 2016 IEEE European
+  Symposium on}, pp.\  372--387. IEEE, 2016{\natexlab{b}}.
+
+\bibitem[Rasmussen(2004)]{rasmussen2004gaussian}
+Rasmussen, Carl~Edward.
+\newblock Gaussian processes in machine learning.
+\newblock In \emph{Advanced lectures on machine learning}, pp.\  63--71.
+  Springer, 2004.
+
+\bibitem[Samangouei et~al.(2018)Samangouei, Kabkab, and
+  Chellappa]{samangouei2018defense}
+Samangouei, Pouya, Kabkab, Maya, and Chellappa, Rama.
+\newblock Defense-gan: Protecting classifiers against adversarial attacks using
+  generative models.
+\newblock 2018.
+
+\bibitem[Szegedy et~al.(2013)Szegedy, Zaremba, Sutskever, Bruna, Erhan,
+  Goodfellow, and Fergus]{szegedy2013intriguing}
+Szegedy, Christian, Zaremba, Wojciech, Sutskever, Ilya, Bruna, Joan, Erhan,
+  Dumitru, Goodfellow, Ian, and Fergus, Rob.
+\newblock Intriguing properties of neural networks.
+\newblock \emph{arXiv preprint arXiv:1312.6199}, 2013.
+
+\bibitem[Zantedeschi et~al.(2017)Zantedeschi, Nicolae, and
+  Rawat]{zantedeschi2017efficient}
+Zantedeschi, Valentina, Nicolae, Maria-Irina, and Rawat, Ambrish.
+\newblock Efficient defenses against adversarial attacks.
+\newblock In \emph{Proceedings of the 10th ACM Workshop on Artificial
+  Intelligence and Security}, pp.\  39--49. ACM, 2017.
+
+\bibitem[Zhu \& Laptev(2017)Zhu and Laptev]{zhu2017deep}
+Zhu, Lingxue and Laptev, Nikolay.
+\newblock Deep and confident prediction for time series at uber.
+\newblock In \emph{Data Mining Workshops (ICDMW), 2017 IEEE International
+  Conference on}, pp.\  103--110. IEEE, 2017.
 
 \end{thebibliography}

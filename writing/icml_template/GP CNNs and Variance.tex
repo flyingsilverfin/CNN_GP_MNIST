@@ -79,113 +79,256 @@
 
 \begin{abstract}
 
-4-6 sentences
-TODO
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium lectus eget lacus fermentum, ac tempus nibh convallis. Aliquam in est dolor. Phasellus lobortis augue a mattis cursus. Vestibulum malesuada blandit enim, at convallis sem imperdiet eu. Sed nec elementum turpis.
 
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
 
-
-* Introductory paragraph
- * Problem with CNNs predictions
- * How GPs are bayesian predictors that give variance
- * This work combines ... by ... showing ... (or something)
- * "Interpretable ML"
+%* Introductory paragraph
+% * Problem with CNNs predictions
+% * How GPs are bayesian predictors that give variance
+% * This work combines ... by ... showing ... (or something)
+% * "Interpretable ML"
  
-CNNs
- * Quick introduction to CNNs
- * How probabilities are calculated (Classification, softmax, alternatives discuss briefly)
- * Use as a feature extractor
- * 
+Convolutional Neural Nets (CNNs) have seen a steep rise in use for a wide range of computer vision and machine learning tasks since Krizhevsky's success at the ImageNet challenge in 2012~\cite{krizhevsky2012imagenet}. Given enough training data, they excel in domain specific applications and are efficient to train, but may confidently mis-predict classes, provide no feedback to users about variability of predictions, and have been shown to be vulnerable to adversarial attacks~\cite{szegedy2013intriguing}. On the other hand, Gaussian Processes are capable of classification and providing a variance about the prediction. This can be interpreted as a confidence in the probability of a prediction.
 
-GPs
- * Quick introduction GPs
- * Bayesian, provide variance
- * Hopefully have higher variance when away from the space they are trained in
-   * show 2D image of a fitted GP with variances for intuition
- * Covariance function/kernel steers behavior, different options are evaluated, can combine kernels but not some others
- * Classification versus regression
+This work combines CNNs with Gaussian Processes (GPs), using the second to last layer of the network as the input to the GP. This combination takes advantage of neural networks' ability to approximate high dimensional data efficiently; GPs can then produce Bayesian uncertainty estimates along with predictions.
+
+The goal of this work is to explore how useful the variance produced by a GP is, in terms of interpretability and enhancing prediction accuracy. Focus will be on image classification using the MNIST~\cite{lecun1998gradient} and N-MNIST~\cite{basu2017learning} datasets, along with adversarially perturbed MNIST images.
+
+
+\section{Background}
+\label{sec:background}
+\subsection{Convolutional Neural Nets}
+\label{sec:background:cnn}
+CNNs are composed a layers of neurons\footnote{A very coarse approximation to biological neurons} with associated weights and activation functions. A CNN takes raw input (images) and reduce them to higher level feature representations. Training is done via backpropagation, minimizing some loss function by adjusting the weights in the network. This is an $O(n)$ operation repeated some number of iterations.
+
+To use CNNs for classification, the second to last layer is fully connected to a layer of $m$ units, where $m$ is the number of classes. The following \textit{softmax} activation is then applied:
+
+\[ \sigma(z)_j = \frac{e^{z_j}}{\sum_{k=1}^{k=m}e^{z_j}} \]
+
+Combined with categorical-cross entropy loss during training, the resulting values between 0 and 1 from each of the $m$ units represent the posterior distribution over the classes \cite{bridle1990probabilistic}. In other words, we obtain the probability of any class using a fully connected softmax layer. Note that this method reinforces large values and squashes small ones due to the exponentiation.
+
+\subsection{Gaussian Processes}
+\label{sec:background:gp}
+Gaussian processes are non-parametrized models of functions, defined by a mean and covariance function. The latter determines how related two points in space are -- generally the further away, the less related. The covariance function is built out of a set of \textit{kernels}, and generates a covariance matrix. By incorporating the mean and covariance functions, along with training data, GPs predict both a mean and a variance for input points.
+
+[TODO image showing uncertainty increasing away from training data]
+
+One of GPs' key benefits is that little hyperparameter tuning is needed -- since the model is fully Bayesian, parameters can be learned directly by maximizing marginal likelihood. However, traditional GPs are costly to train -- covariance matrices are $O(n^2)$ in size, and inversion and decomposition operations have an $O(n^3)$ cost, where $n$ is the number of training samples.
+
+To deal with the issue of scalability\footnote{The training data here is a 60000x128 vector which is formed into a square matrix}, various approximation methods have been developed. One approach that is used here is called Sparse Variational Gaussian Processes \cite{hensman2015scalable}. This classification approach effectively uses a set of \textit{inducing points} optimized from the training data as an estimate of the full data set; these are then used to fit a GP.
+
+Gaussian processes classification is described in \citet*{rasmussen2004gaussian}. This book also describes a variety of kernels, the choice of which strongly affects performance -- some are explored in Section~\ref{sec:mnist}. 
+
+\subsection{Adversarial Attacks}
+\label{sec:background:adv}
+% https://blog.ycombinator.com/how-adversarial-attacks-work/
+% 
+In this paper, an adversarially perturbed MNIST dataset is tested. The finite-gradient sign method~\cite{goodfellow2014explaining} (FGSM) is used to perform non-targeted attacks. This approach requires access to the trained model to maximize a loss function, performing gradient ascent away from correct classifications by adding small amounts of noise at each step. This noise is controlled by a parameters $\epsilon$.
+
+Other attacks, such as Jacobian-based saliency maps~\cite{papernot2016limitations} are not explored here, but the work could easily extended to include it.
+
+% CNNs
+% * Quick introduction to CNNs
+% * How probabilities are calculated (Classification, softmax, alternatives discuss briefly)
+% * Use as a feature extractor
+% * 
+
+%GPs
+% * Quick introduction GPs
+% * Bayesian, provide variance
+% * Hopefully have higher variance when away from the space they are trained in
+%   * show 2D image of a fitted GP with variances for intuition
+% * Covariance function/kernel steers behavior, different options are evaluated, can combine kernels but not some others
+% * Classification versus regression
   
-In general, how we can combine these 
- * Using CNN as feature extractor, replacing Softmax with GP
- * What this paper will explore
- * MNIST, N-MNIST (\cite{basu2017learning}), Adverserial examples
- * Comparing CNN, GP with 2 different Kernels, two Hybrid models (ref to section where this decision is justified)
+% In general, how we can combine these 
+% * Using CNN as feature extractor, replacing Softmax with GP
+% * What this paper will explore
+% * MNIST, N-MNIST (\cite{basu2017learning}), Adverserial examples
+% * Comparing CNN, GP with 2 different Kernels, two Hybrid models (ref to section where this decision is justified)
  
 
 
 
 \section{Related Work}
 
-* Variance from CNNs
-* GPDNN
-* Adverserial attacks, NN robustness to new examples (! TODO reading)
+% EXCELLENT RESOURCE http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html
+
+The key component of this work is using a fully Bayesian inference method to derive interpretable confidences, as well as variances for predictions. Some work exists along these lines, adapting CNNs to produce variances as well. One notable contribution is dropout-based approach~\cite{gal2016dropout}, using dropout at \textit{test} time to sample a variety of predictions and computing a mean and variance from this.
+
+Another approach is using fully Bayesian Neural Networks, an idea established in the 90s~\cite{mackay1992practical}. These place a distribution over each parameter in the network, making inference and calculating the full posterior distribution essentially intractable. More recently there has been work towards this end~\cite{blundell2015weight} that is backpropagation and GPU compatible. Other work has applied similar ideas to recurrent neural networks as well~\cite{zhu2017deep}.
+
+The most directly related work from Bradshaw et. al.~\cite{Bradshaw2017} who investigate GPDNNs (Gaussian Process Deep Neural Nets) in a similar manner to this paper. However, they emphasize end-to-end trained models, comparing neural nets with softmax classification to ones with a GP replacing the softmax layer and retraining from scratch. In contrast, this work explores using pre-trained neural nets in combination with gaussian processes which are trained post-hoc.
+
+This work will evaluate the normal CNN and the GP model on adversarially perturbed MNIST images, showing modest gains and better interpretability in the GP. Most methods for protecting machine learning models from such attacks are either based on data augumentation (which does not scale), or training multiple networks with high overhead. Recently alternative approaches have been proposed, such as using GANs~\cite{samangouei2018defense}\cite{zantedeschi2017efficient}.
+
+%* Variance from CNNs
+% * GPDNN
+%* Adverserial attacks, NN robustness to new examples (! TODO reading)
 
  
 \section{Implementation}
-* GPFlow, alternatives explored
- * Batching, different GP mechanisms to deal with O(N\^3) scalability
- * Inducing points
+
+The core libraries used were Keras~\cite{chollet2015keras} with a TensorFlow\footnote{https://www.tensorflow.org/} backend for the MNIST CNN. GPFlow~\cite{GPflow2017} was used to implement the gaussian process model due to its support for large, high dimensional training data\footnote{GPFlow implements sparse variational GPs described in Section~\ref{sec:background:gp} as well as batched training}. Scipy's machine learning toolkit was also tested but was found to be unsuitable.
+
+The models initially tested are
+\begin{enumerate}
+\item Keras MNIST CNN trained on 60,000 training images.
+\item 3 different GPs trained on the same images after feature extraction through the CNN's first 6 layers (ie. excluding the fully connected softmax layer). The GPs tested will be explained in~\ref{sec:mnist:acc}.
+\end{enumerate} 
+
+TODO MNIST CNN architecture figure
+
+% * GPFlow, alternatives explored
+% * Batching, different GP mechanisms to deal with O(N\^3) scalability
+% * Inducing points
  * Approximate trainining time for GP (=> discussion?)
  * Predict time for GP (=> discussion?)
 
-* Keras MNIST
- * 
 
-* Train, test sizes across MNIST, NMNIST, Adverserial, and image sizes (28x28, grayscale)
+* Train, test sizes across MNIST, NMNIST, Adverserial \cite{papernot2016cleverhans}, and image sizes (28x28, grayscale)
 * Balanced datasets? (! TODO)
-* OPTIONAL: check performance across specific numbers?
+% * OPTIONAL: check performance across specific numbers?
 
 
-* Hybrid model (=> own Section?)
+% * Hybrid model (=> own Section?)
 
 \section{MNIST}
+\label{sec:mnist}
+This section focuses on the MNIST test data set, consisting of 10,000 examples, each 28x28 pixels.
 
 \subsection{Accuracy of Various Models}
-* CNN performance
-* Show GP performance across various kernels
-* Many configurations were explored, results
- * White noise variance is not a big factor in performance
- * Performance is most correlated with 
-* Explain decision to use Matern12 and Linear*Matern32
- * inherits linear robustness to Blur/Low contrast
- * Inherits nice Matern32 properties for Hybridization
- * not that roboust to adverserial... while Matern12 is
+\label{sec:mnist:acc}
 
-* footnote SVM as a example of another kernel method
+Figure TODO shows the test-set accuracy of the CNN, along with three different Gaussian Processes: one using a \textit{Polynomial} kernel, one using the \textit{Matern12} kernel, and the last a \textit{Matern32*Linear} kernel (referred to as `combined' kernel from now on). For explanation of these kernels please refer to~\citet*{mussen2004gaussian}.
+
+TODO NSERT FIGURE BAR with CNN, Polynomial, Matern12, combined kernels
+
+These kernels were chosen out of 17 different single and combined kernels. It will be shown later that the \textit{Polynomial} kernel performs well in adversarial situations, as does \textit{Matern12}, while the combined kernel appears to inherit properties from its two components: \textit{Linear} kernels exhibit strong performance on non-adverserial datasets, while \textit{Matern32} performs worse across the board but has an interesting property which will be explored in Section~\ref{sec:mnist:hybridization}.
+
+While exploring the GP design space, many configurations were tested. The most influential by far was the number of inducing points used. All kernels in this paper were created using every 25th data point as a possible inducing point and allowed to be automatically optimized during training. Minibatch sizes were set at 8000. A gaussian noise kernel was added to all kernels with constant variance 0.1, though its inclusion nor its variance have much impact on results.
+
+%* CNN performance
+%* Show GP performance across various kernels
+%* Many configurations were explored, results
+% * White noise variance is not a big factor in performance
+% * Performance is most correlated with 
+%* Explain decision to use Polynomial and Linear*Matern32
+% * inherits linear robustness to Blur/Low contrast
+% * Inherits nice Matern32 properties for Hybridization
+% * not that roboust to adverserial... while Matern12 is
+
+% optional: * footnote SVM as a example of another kernel method
 
 \subsection{Distribution of Variance}
-* Show CDF of incorrect, correct predictions
-* Discuss how this is useful
 
-\subsection{GP Variance}
-* Plot GP prediction probability versus confidence
-* Show it's fully deterministic (TODO double check code to make sure it is)
-* Conclude variance is not actually extra information but useful for interpretation
-* Discuss interpretability, show some plots
+The previous section simply compares the performance of \textit{softmax} versus a GP as a feature classifier. The goal of this paper is to examine the utility of prediction variance, which the CNN does not provide. The following figures examine the distribution of variance for correctly, and incorrectly classified examples using the combined kernel.
+
+FIGURES TODO
+
+These plots clearly show that the variance of the predicted class is higher than for those that are predicted correctly. This aligns with our expectations that correctly classified examples are generally confidently predicted, while inputs that are incorrectly classified have a lower confidence (higher variance). Thus, as a use case, a human operator seeing high variance should be suspicious of an incorrect classification~\footnote{This is particularly useful in medical and related fields where a mistake is extremely costly.}.
+
+
+%* Show CDF of incorrect, correct predictions
+%* Discuss how this is useful
+
+
+\subsection{SVGP Variance}
+
+The GP implementation used in this paper is the sparse variational gaussian process (SVGP) implemented in GPFlow. It is worth double checking that the variance being predicted makes sense and is providing additional information.
+
+TODO FIGURE
+
+The above figure shows that, actually, with this technique and implementation, the confidence predicted completely determines the predicted variance. In fact, a peek into the implementation reveals that variance $\sigma$ is calculated from the predicted mean $p$ as $\sigma = p - p^2$.
+
+Note that this observation does not invalidate the usefulness of variance -- it simply says that there is no point getting both mean and variance from the SVGP. Calculating the variance and in turn standard deviation is still a useful indicator for explaining results, and later it shall be used to merge \textit{softmax} and GP predictions.
+
+%* Plot GP prediction probability versus confidence
+%* Show it's fully deterministic (TODO double check code to make sure it is -- YUP)
+%* Conclude variance is not actually extra information but useful for interpretation
+%* Discuss interpretability, show some plots (? what plots was i thinking of here TODO)
 
 \subsection{Examining Misclassifications}
-* Plot CNN and GP mis-prediction probabilities
- * Discuss... conclusion is that CNN more confidently mis-predicts results?
-* Show examples that both fail, one fails
-* Discuss that nothing can be done when both fail - no extra information
-* Show overlap, non-overlap in misclassifications
-* Inspires Hybridization!
+
+While noting that all GP models and the CNN achieve very high classification accuracies, it is worth further examining the misclassifications of each type of model. I again focus on results from the combined kernel as representative of all three GP models.
+
+First note that the CNN is slightly more confident when mis-predicting than the GP. Since we established that variance is correlated directly with prediction confidence, this is what we expect, though the CNN results have no such interpretation.
+
+\begin{table}[htb]
+\caption{Mean and Standard Deviation of probability of incorrect predicted classes for the combined kernel GP and the CNN.}
+\label{tab:misprediction}
+\vskip 0.15in
+\begin{center}
+\begin{small}
+\begin{sc}
+\begin{tabular}{lcccr}
+\toprule
+Statistic 			& GP 			& CNN \\
+\midrule
+Mean    			& 74.5\% 		& 75.3\% \\
+Standard Deviation 	& 17.7\%		& 18.5\%  \\
+\bottomrule
+\end{tabular}
+\end{sc}
+\end{small}
+\end{center}
+\vskip -0.1in
+\end{table}
+
+Next, we can inspect the particulars of mis-classifications.
+
+
+TODO figure VENN DIAGRAM
+
+The Venn diagram in Figure~ TODO illustrates that both models largely fail on the same test data. These can be seen as the truly difficult or ambiguous images, and nothing much can be done about them.
+
+TODO figure both misclassified, CNN probs, GP probs
+
+However, more interesting is the non-overlapping region. Though here there are few examples out of the entire dataset of 10000, in other settings these disagreeing classification regions are larger.
+
+TODO figure of CNN incorrect MNIST, CNN probabilities, GP probs.
+TODO figure of GP incorrect MNIST, CNN probabilities, GP probs.
+
+From Figures TODO and the corresponding probability distributions we see there might be hope for boosting accuracy by combining the results from the CNN and the GP. This inspires the hybridized model in the next section.
+
+% * Plot CNN and GP mis-prediction probabilities
+%  * Discuss... conclusion is that CNN more confidently mis-predicts results?
+% * Show examples that both fail, one fails
+% * Discuss that nothing can be done when both fail - no extra information
+% * Show overlap, non-overlap in misclassifications
+% * Inspires Hybridization!
 
 \subsection{Hybridization}
-* Might be able to rescue these individual misclassifications
- * steered by variance!
- * Note that we give up interpretability here for higher accuracy in some cases, but we can notify the users the uncertainty is higher because the models disagree!	
- * some kernels better than other
+\label{sec:mnist:hybridization}
+
+Because we have a sort of ensemble of classifiers when using both the CNN and a GP, we can use the extra bit of information during disagreements to try to choose the best result, steered by the variance predicted by the GP.
+
+We can devise a heuristic for merging results as follows. The driving principle is that we trust the Gaussian Process model more than the CNN, since the CNN gives no indicator if how reliable its result is.
+
+If the GP predicts a higher probability than the CNN's best prediction, we default to the GP's result. If the top CNN prediction is within $d$ standard deviations from the same GP prediction, we accept the CNN prediction (in practice this ensures the GP agrees the probability is plausible given its prediction variance). A stronger acceptance criterion that can be used is that we require both the top CNN prediction agree with the GPs corresponding probability, as well as the opposite: the top GP's prediction is within $d$ standard deviations from the CNN's prediction for the same class.
+
+There are several points to discuss regarding this merge: when accepting a CNN prediction, we lose a meaningful variance and the resulting interpretability. However this could easily be fixed by flagging the result as uncertain due to disagreement. Secondly, some kernels lend themselves to this blending better than others. Through experimentation the \textit{Matern32}, and in turn the combined \textit{Linear*Matern32}, kernels were found to provide the best results ***WHY***. Lastly, other merging criteria are possible and could be explored.  %TODO LIKEWHAT other merging criteria.
+
+From here on I also present Hybridized accuracy results using the combined kernel with an acceptance criteria of $d=0.5$ standard deviations. %TODO am i also including the weaker criterion?
+
+%TODO might able to improve this still???
+%====> I think I'm currently defaulting to GP if it has higher probability...? Can avoid this? Why not just apply %stronger criterion directly?
+
+%* Might be able to rescue these individual misclassifications
+% * steered by variance!
+% * Note that we give up interpretability here for higher accuracy in some cases, but we can notify the users the uncertainty is higher because the models disagree!	
+% * some kernels better than other
 
 * Describe both criteria, pros and cons of each
-* show some results with different criteria for some example where there's a significant difference between CNN and GP (Low contrast Linear*Matern32?)
-* Will show results from 'stronger@0.5' with Linear*Matern32 which performs best of all tested kernels at hybridization due to having the least overlapping misclassifications
+%* show some results with different criteria for some example where there's a significant difference between CNN and GP (Low contrast Linear*Matern32?)
+%* Will show results from 'stronger@0.5' with Linear*Matern32 which performs best of all tested kernels at hybridization due to having the least overlapping misclassifications
 
 
-Gains from Hybridization are usually not present
+% Gains from Hybridization are usually not present
 
 \section{N-MNIST}
 
@@ -213,6 +356,16 @@ Gains from Hybridization are usually not present
 * Accuracy across models as epsilon varies
 
 * Distribution of correct, incorrect classification Variances for Linear*Matern32 for eps=0.2
+
+\section{Conclusion}
+* Usefulness of variance
+* Resistance to adverserial attacks
+* kernel types
+* reference automatic kernel building?
+* hybridization effectiveness/ineffectiveness
+* => ensembles of GP's and kernels? => more interesting hybridization?
+* mention SVMs, outperform other methods when data is clean, read up on probabilistic outputs of SVMs?
+
 
 
 Citations within the text should include the authors' last names and

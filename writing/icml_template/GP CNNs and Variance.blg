@@ -10,45 +10,48 @@ Warning--I didn't find a database entry for "MachineLearningI"
 Warning--I didn't find a database entry for "langley00"
 Warning--I didn't find a database entry for "Newell81"
 Warning--I didn't find a database entry for "DudaHart2nd"
-You've used 1 entry,
+Warning--empty journal in Bradshaw2017
+Warning--empty journal in hensman2015scalable
+Warning--empty journal in samangouei2018defense
+You've used 19 entries,
             2773 wiz_defined-function locations,
-            612 strings with 5309 characters,
-and the built_in function-call counts, 789 in all, are:
-= -- 61
-> -- 75
-< -- 0
-+ -- 25
-- -- 24
-* -- 80
-:= -- 132
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 11
-chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 21
-empty$ -- 42
-format.name$ -- 25
-if$ -- 150
-int.to.chr$ -- 1
+            712 strings with 8755 characters,
+and the built_in function-call counts, 10353 in all, are:
+= -- 920
+> -- 671
+< -- 14
++ -- 227
+- -- 207
+* -- 827
+:= -- 1557
+add.period$ -- 64
+call.type$ -- 19
+change.case$ -- 125
+chr.to.int$ -- 18
+cite$ -- 41
+duplicate$ -- 472
+empty$ -- 785
+format.name$ -- 231
+if$ -- 2210
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 20
+missing$ -- 18
+newline$ -- 105
+num.names$ -- 76
+pop$ -- 274
 preamble$ -- 1
-purify$ -- 10
+purify$ -- 106
 quote$ -- 0
-skip$ -- 21
+skip$ -- 386
 stack$ -- 0
-substring$ -- 27
-swap$ -- 1
-text.length$ -- 0
+substring$ -- 346
+swap$ -- 92
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 11
-warning$ -- 0
-while$ -- 5
+type$ -- 209
+warning$ -- 3
+while$ -- 86
 width$ -- 0
-write$ -- 20
-(There were 7 warnings)
+write$ -- 252
+(There were 10 warnings)
