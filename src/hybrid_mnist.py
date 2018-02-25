@@ -50,24 +50,47 @@ class Hybrid_MNIST(object):
 
                 if verbose:
                     print("Models disagree on predicted class")
+                
+                # try giving priority to the top confidence
+                if cnn_pred_prob > gp_pred_prod:
+                    criterion = cnn_pred_prob < gp_prob_for_cnn_pred + self.accept_cnn_tolerance*gp_stddev_for_cnn_pred
 
-                criterion = cnn_pred_prob < (gp_prob_for_cnn_pred + self.accept_cnn_tolerance*gp_stddev_for_cnn_pred)
-                if self.stronger_criterion:
-                    criterion = criterion and (cnn_pred_prob > (gp_pred_prob - self.accept_cnn_tolerance*np.sqrt(gp_pred_var)))
-
-
-                if criterion:
-                    if verbose:
-                        print("  Taking CNN prediction, probability is within",
-                              self.accept_cnn_tolerance, "stddev of GP probability")
-                    decisions.append([1, cnn_class, cnn_pred_prob, -1])
-                    decision_probs.append(cnn_probs)
-                    decision_vars.append([-1 for _ in range(mu.shape[-1])])
+                    if criterion:
+                        if verbose:
+                            print("  Taking CNN prediction based on criterion")
+                        decisions.append([1, cnn_class, cnn_pred_prob, -1])
+                        decision_probs.append(cnn_probs)
+                        decision_vars.append([-1 for _ in range(mu.shape[-1])])
 
                 else:
-                    if verbose:
-                        print("  Taking GP prediction")
+                    criterion = cnn_probs[gp_class] > gp_pred_prob - self.accept_cnn_tolerance*gp_pred_var
+                    if criterion:
+                        if verbose:
+                            print("  GP prediction accepted based on criterion")
+
+                    print("  Taking GP prediction")
                     decisions.append([0, gp_class, gp_pred_prob, gp_pred_var])
                     decision_probs.append(mu)
                     decision_vars.append(var)
+
+#
+#                criterion = cnn_pred_prob < (gp_prob_for_cnn_pred + self.accept_cnn_tolerance*gp_stddev_for_cnn_pred)
+#                if self.stronger_criterion:
+#                    criterion = criterion and (cnn_pred_prob > (gp_pred_prob - self.accept_cnn_tolerance*np.sqrt(gp_pred_var)))
+#
+#
+#                if criterion:
+#                    if verbose:
+#                        print("  Taking CNN prediction, probability is within",
+#                              self.accept_cnn_tolerance, "stddev of GP probability")
+#                    decisions.append([1, cnn_class, cnn_pred_prob, -1])
+#                    decision_probs.append(cnn_probs)
+#                    decision_vars.append([-1 for _ in range(mu.shape[-1])])
+#
+#                else:
+#                    if verbose:
+#                        print("  Taking GP prediction")
+#                    decisions.append([0, gp_class, gp_pred_prob, gp_pred_var])
+#                    decision_probs.append(mu)
+#                    decision_vars.append(var)
         return (np.array(decisions), np.array(decision_probs), np.array(decision_vars))
