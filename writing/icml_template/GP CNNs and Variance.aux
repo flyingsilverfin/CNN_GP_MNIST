@@ -21,12 +21,12 @@
 \citation{lecun1998gradient}
 \citation{basu2017learning}
 \citation{bridle1990probabilistic}
+\citation{hensman2015scalable}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:background}{{2}{1}{}{section.2}{}}
 \newlabel{sec:background:cnn}{{2.1}{1}{}{subsection.2.1}{}}
 \newlabel{sec:background:gp}{{2.2}{1}{}{subsection.2.2}{}}
-\citation{hensman2015scalable}
-\citation{rasmussen2004gaussian}
+\citation{rasmussen2006gaussian}
 \citation{goodfellow2014explaining}
 \citation{papernot2016limitations}
 \citation{gal2016dropout}
@@ -38,43 +38,53 @@
 \citation{zantedeschi2017efficient}
 \citation{chollet2015keras}
 \citation{GPflow2017}
-\citation{papernot2016cleverhans}
-\citation{mussen2004gaussian}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:gp:basic}{{1}{2}{A simple one-dimensional GP regression. The dashed lines represent two standard deviations from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.\relax }{figure.caption.1}{}}
 \newlabel{sec:background:adv}{{2.3}{2}{}{subsection.2.3}{}}
-\newlabel{sec:mnist}{{5}{2}{}{section.5}{}}
-\newlabel{sec:mnist:acc}{{5.1}{2}{}{subsection.5.1}{}}
-\newlabel{tab:misprediction}{{1}{3}{Mean and Standard Deviation of probability of incorrect predicted classes for the combined kernel GP and the CNN}{table.1}{}}
-\citation{Samuel59}
-\citation{Samuel59}
-\citation{kearns89,Samuel59,mitchell80}
-\citation{MachineLearningI}
-\citation{Samuel59}
-\citation{langley00}
-\citation{Newell81}
-\citation{DudaHart2nd}
-\citation{MachineLearningI}
-\citation{mitchell80}
-\citation{kearns89}
-\newlabel{sec:mnist:hybridization}{{5.5}{4}{}{subsection.5.5}{}}
-\citation{langley00}
+\citation{rasmussen2006gaussian}
+\newlabel{sec:mnist}{{5}{3}{}{section.5}{}}
+\newlabel{sec:mnist:acc}{{5.1}{3}{}{subsection.5.1}{}}
+\newlabel{fig:model_accuracies}{{3}{3}{Accuracy across the different models presented throughout this paper. The Hybrid model will be developed in Section~\ref {sec:mnist:hybridization}. The models perform comparably, except the \textit {Polynomial} kernel which is marginally worse.\relax }{figure.caption.3}{}}
+\newlabel{fig:mnist-variances}{{4}{3}{Distribution of Variances across correctly classified examples. 95\% of these classifications occur with a variance of 0.02 or less.\relax }{figure.caption.4}{}}
+\newlabel{sec:svgp-variance}{{5.3}{4}{}{subsection.5.3}{}}
+\newlabel{fig:all_variances}{{5}{4}{Plotting class probability versus variance on the standard MNIST dataset. They are totally correlated and thus one completely determines the other.\relax }{figure.caption.5}{}}
+\newlabel{fig:mispredictions}{{6}{4}{Misclassification confidences for CNN and GP with the \textit {combined} kernel.\relax }{figure.caption.6}{}}
+\newlabel{tab:misprediction}{{1}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.7}{}}
+\newlabel{tab:mispredictions}{{1}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.7}{}}
+\newlabel{fig:venn}{{7}{4}{Overlap in misclassifications of the CNN and the \textit {combined} GP model.\relax }{figure.caption.8}{}}
+\newlabel{fig:difficult}{{8}{5}{An example of a truly difficult image that both models fail on. The green bar represents the true class, while the tallest red one is the predicted class.\relax }{figure.caption.9}{}}
+\newlabel{sec:mnist:hybridization}{{5.5}{5}{}{subsection.5.5}{}}
+\newlabel{fig:mnist:mismatch}{{9}{5}{Examining cases of misclassifications. The left column corresponds to one of the 16 examples the CNN classified incorrectly, while the right column stems from the GP's incorrect classifications. With the right heuristic these case, and others, may be salvageable.\relax }{figure.caption.10}{}}
+\newlabel{sec:mnist:hybridization:criteria}{{5.5.1}{5}{}{subsubsection.5.5.1}{}}
+\citation{basu2017learning}
+\newlabel{fig:nmnist:accuracies}{{11}{6}{Performance across all models and n-MNIST data sets.\relax }{figure.caption.12}{}}
+\newlabel{sec:adversarial}{{7}{6}{}{section.7}{}}
+\citation{Bradshaw2017}
+\newlabel{fig:nmist:vars}{{12}{7}{Variances across the n-MNIST dataset\relax }{figure.caption.13}{}}
+\newlabel{fig:adv:accuracies}{{13}{7}{Accuracies on FGSM perturbed MNIST, $\epsilon =0.2$\relax }{figure.caption.14}{}}
+\newlabel{fig:adv:epsilons}{{14}{7}{Classification Accuracies on FGSM attacked MNIST images across varying $\epsilon $\relax }{figure.caption.15}{}}
+\citation{abdessalem2017automatic}
+\citation{duvenaud2014automatic}
 \bibdata{gp_cnn_bibliography.bib}
-\bibcite{basu2017learning}{{1}{2017}{{Basu et~al.}}{{Basu, Karki, Ganguly, DiBiano, Mukhopadhyay, Gayaka, Kannan, and Nemani}}}
-\bibcite{blundell2015weight}{{2}{2015}{{Blundell et~al.}}{{Blundell, Cornebise, Kavukcuoglu, and Wierstra}}}
-\bibcite{Bradshaw2017}{{3}{2017}{{Bradshaw et~al.}}{{Bradshaw, Matthews, and Ghahramani}}}
-\bibcite{bridle1990probabilistic}{{4}{1990}{{Bridle}}{{}}}
-\bibcite{chollet2015keras}{{5}{2015}{{Chollet et~al.}}{{}}}
-\bibcite{gal2016dropout}{{6}{2016}{{Gal \& Ghahramani}}{{Gal and Ghahramani}}}
-\bibcite{goodfellow2014explaining}{{7}{2014}{{Goodfellow et~al.}}{{Goodfellow, Shlens, and Szegedy}}}
-\bibcite{hensman2015scalable}{{8}{2015}{{Hensman et~al.}}{{Hensman, Matthews, and Ghahramani}}}
-\bibcite{krizhevsky2012imagenet}{{9}{2012}{{Krizhevsky et~al.}}{{Krizhevsky, Sutskever, and Hinton}}}
-\bibcite{lecun1998gradient}{{10}{1998}{{LeCun et~al.}}{{LeCun, Bottou, Bengio, and Haffner}}}
-\bibcite{mackay1992practical}{{11}{1992}{{MacKay~David}}{{}}}
-\bibcite{GPflow2017}{{12}{2017}{{Matthews et~al.}}{{Matthews, {van der Wilk}, Nickson, Fujii, {Boukouvalas}, {Le{\'o}n-Villagr{\'a}}, Ghahramani, and Hensman}}}
-\bibcite{papernot2016cleverhans}{{13}{2016{a}}{{Papernot et~al.}}{{Papernot, Goodfellow, Sheatsley, Feinman, and McDaniel}}}
-\bibcite{papernot2016limitations}{{14}{2016{b}}{{Papernot et~al.}}{{Papernot, McDaniel, Jha, Fredrikson, Celik, and Swami}}}
-\bibcite{rasmussen2004gaussian}{{15}{2004}{{Rasmussen}}{{}}}
-\bibcite{samangouei2018defense}{{16}{2018}{{Samangouei et~al.}}{{Samangouei, Kabkab, and Chellappa}}}
-\bibcite{szegedy2013intriguing}{{17}{2013}{{Szegedy et~al.}}{{Szegedy, Zaremba, Sutskever, Bruna, Erhan, Goodfellow, and Fergus}}}
-\bibcite{zantedeschi2017efficient}{{18}{2017}{{Zantedeschi et~al.}}{{Zantedeschi, Nicolae, and Rawat}}}
-\bibcite{zhu2017deep}{{19}{2017}{{Zhu \& Laptev}}{{Zhu and Laptev}}}
+\bibcite{abdessalem2017automatic}{{1}{2017}{{Abdessalem et~al.}}{{Abdessalem, Dervilis, Wagg, and Worden}}}
+\newlabel{sec:discussion}{{8}{8}{}{section.8}{}}
+\bibcite{basu2017learning}{{2}{2017}{{Basu et~al.}}{{Basu, Karki, Ganguly, DiBiano, Mukhopadhyay, Gayaka, Kannan, and Nemani}}}
+\bibcite{blundell2015weight}{{3}{2015}{{Blundell et~al.}}{{Blundell, Cornebise, Kavukcuoglu, and Wierstra}}}
+\bibcite{Bradshaw2017}{{4}{2017}{{Bradshaw et~al.}}{{Bradshaw, Matthews, and Ghahramani}}}
+\bibcite{bridle1990probabilistic}{{5}{1990}{{Bridle}}{{}}}
+\bibcite{chollet2015keras}{{6}{2015}{{Chollet et~al.}}{{}}}
+\bibcite{duvenaud2014automatic}{{7}{2014}{{Duvenaud}}{{}}}
+\bibcite{gal2016dropout}{{8}{2016}{{Gal \& Ghahramani}}{{Gal and Ghahramani}}}
+\bibcite{goodfellow2014explaining}{{9}{2014}{{Goodfellow et~al.}}{{Goodfellow, Shlens, and Szegedy}}}
+\bibcite{hensman2015scalable}{{10}{2015}{{Hensman et~al.}}{{Hensman, Matthews, and Ghahramani}}}
+\bibcite{krizhevsky2012imagenet}{{11}{2012}{{Krizhevsky et~al.}}{{Krizhevsky, Sutskever, and Hinton}}}
+\bibcite{lecun1998gradient}{{12}{1998}{{LeCun et~al.}}{{LeCun, Bottou, Bengio, and Haffner}}}
+\bibcite{mackay1992practical}{{13}{1992}{{MacKay~David}}{{}}}
+\bibcite{GPflow2017}{{14}{2017}{{Matthews et~al.}}{{Matthews, {van der Wilk}, Nickson, Fujii, {Boukouvalas}, {Le{\'o}n-Villagr{\'a}}, Ghahramani, and Hensman}}}
+\bibcite{papernot2016limitations}{{15}{2016}{{Papernot et~al.}}{{Papernot, McDaniel, Jha, Fredrikson, Celik, and Swami}}}
+\bibcite{rasmussen2006gaussian}{{16}{2006}{{Rasmussen \& Williams}}{{Rasmussen and Williams}}}
+\bibcite{samangouei2018defense}{{17}{2018}{{Samangouei et~al.}}{{Samangouei, Kabkab, and Chellappa}}}
+\bibcite{szegedy2013intriguing}{{18}{2013}{{Szegedy et~al.}}{{Szegedy, Zaremba, Sutskever, Bruna, Erhan, Goodfellow, and Fergus}}}
+\bibcite{zantedeschi2017efficient}{{19}{2017}{{Zantedeschi et~al.}}{{Zantedeschi, Nicolae, and Rawat}}}
+\bibcite{zhu2017deep}{{20}{2017}{{Zhu \& Laptev}}{{Zhu and Laptev}}}
 \bibstyle{icml2018}

@@ -1,9 +1,16 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abdessalem et~al.(2017)Abdessalem, Dervilis, Wagg, and
+  Worden]{abdessalem2017automatic}
+Abdessalem, Anis~Ben, Dervilis, Nikolaos, Wagg, David~J, and Worden, Keith.
+\newblock Automatic kernel selection for gaussian processes regression with
+  approximate bayesian computation and sequential monte carlo.
+\newblock \emph{Frontiers in Built Environment}, 3:\penalty0 52, 2017.
 
 \bibitem[Basu et~al.(2017)Basu, Karki, Ganguly, DiBiano, Mukhopadhyay, Gayaka,
   Kannan, and Nemani]{basu2017learning}
@@ -37,6 +44,11 @@ Bridle, John~S.
 Chollet, Fran\c{c}ois et~al.
 \newblock Keras.
 \newblock \url{https://github.com/keras-team/keras}, 2015.
+
+\bibitem[Duvenaud(2014)]{duvenaud2014automatic}
+Duvenaud, David.
+\newblock \emph{Automatic model construction with Gaussian processes}.
+\newblock PhD thesis, University of Cambridge, 2014.
 
 \bibitem[Gal \& Ghahramani(2016)Gal and Ghahramani]{gal2016dropout}
 Gal, Yarin and Ghahramani, Zoubin.
@@ -86,26 +98,19 @@ Matthews, Alexander G. de~G., {van der Wilk}, Mark, Nickson, Tom, Fujii,
   (40):\penalty0 1--6, apr 2017.
 \newblock URL \url{http://jmlr.org/papers/v18/16-537.html}.
 
-\bibitem[Papernot et~al.(2016{\natexlab{a}})Papernot, Goodfellow, Sheatsley,
-  Feinman, and McDaniel]{papernot2016cleverhans}
-Papernot, Nicolas, Goodfellow, Ian, Sheatsley, Ryan, Feinman, Reuben, and
-  McDaniel, Patrick.
-\newblock cleverhans v1.0.0: an adversarial machine learning library.
-\newblock \emph{arXiv preprint arXiv:1610.00768}, 2016{\natexlab{a}}.
-
-\bibitem[Papernot et~al.(2016{\natexlab{b}})Papernot, McDaniel, Jha,
-  Fredrikson, Celik, and Swami]{papernot2016limitations}
+\bibitem[Papernot et~al.(2016)Papernot, McDaniel, Jha, Fredrikson, Celik, and
+  Swami]{papernot2016limitations}
 Papernot, Nicolas, McDaniel, Patrick, Jha, Somesh, Fredrikson, Matt, Celik,
   Z~Berkay, and Swami, Ananthram.
 \newblock The limitations of deep learning in adversarial settings.
 \newblock In \emph{Security and Privacy (EuroS\&P), 2016 IEEE European
-  Symposium on}, pp.\  372--387. IEEE, 2016{\natexlab{b}}.
+  Symposium on}, pp.\  372--387. IEEE, 2016.
 
-\bibitem[Rasmussen(2004)]{rasmussen2004gaussian}
-Rasmussen, Carl~Edward.
-\newblock Gaussian processes in machine learning.
-\newblock In \emph{Advanced lectures on machine learning}, pp.\  63--71.
-  Springer, 2004.
+\bibitem[Rasmussen \& Williams(2006)Rasmussen and
+  Williams]{rasmussen2006gaussian}
+Rasmussen, Carl~Edward and Williams, Christopher~KI.
+\newblock \emph{Gaussian process for machine learning}.
+\newblock MIT press, 2006.
 
 \bibitem[Samangouei et~al.(2018)Samangouei, Kabkab, and
   Chellappa]{samangouei2018defense}
