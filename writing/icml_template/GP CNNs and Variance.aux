@@ -20,49 +20,53 @@
 \citation{szegedy2013intriguing}
 \citation{lecun1998gradient}
 \citation{basu2017learning}
+\citation{bridle1990probabilistic}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:background}{{2}{1}{}{section.2}{}}
 \newlabel{sec:background:cnn}{{2.1}{1}{}{subsection.2.1}{}}
-\citation{bridle1990probabilistic}
+\newlabel{sec:background:gp}{{2.2}{1}{}{subsection.2.2}{}}
 \citation{hensman2015scalable}
 \citation{rasmussen2006gaussian}
 \citation{goodfellow2014explaining}
 \citation{papernot2016limitations}
+\citation{paass1993assessing}
 \citation{mackay1992practical}
 \citation{blundell2015weight}
-\citation{zhu2017deep}
 \citation{gal2016dropout}
 \citation{Bradshaw2017}
-\newlabel{sec:background:gp}{{2.2}{2}{}{subsection.2.2}{}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:gp:basic}{{1}{2}{A simple one-dimensional GP regression. The dashed lines represent two standard deviations from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.\relax }{figure.caption.1}{}}
-\newlabel{sec:background:adv}{{2.3}{2}{}{subsection.2.3}{}}
 \citation{samangouei2018defense}
 \citation{zantedeschi2017efficient}
 \citation{chollet2015keras}
 \citation{GPflow2017}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:gp:basic}{{1}{2}{A simple one-dimensional GP regression. The dashed lines represent two standard deviations from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.\relax }{figure.caption.1}{}}
+\newlabel{sec:background:adv}{{2.3}{2}{}{subsection.2.3}{}}
 \citation{rasmussen2006gaussian}
 \newlabel{sec:mnist}{{5}{3}{}{section.5}{}}
 \newlabel{sec:mnist:acc}{{5.1}{3}{}{subsection.5.1}{}}
 \newlabel{tab:model_accuracies}{{1}{3}{MNIST test set accuracy of of various models. The Hybrid model will be developed in Section~\ref {sec:mnist:hybridization}.\relax }{table.caption.2}{}}
-\newlabel{fig:mnist-variances}{{2}{4}{Distribution of Variances across correctly classified examples. 95\% of these classifications occur with a variance of 0.02 or less.\relax }{figure.caption.3}{}}
-\newlabel{sec:svgp-variance}{{5.3}{4}{}{subsection.5.3}{}}
-\newlabel{fig:all_variances}{{3}{4}{Plotting class probability versus variance on the standard MNIST dataset. They are totally correlated and thus one completely determines the other.\relax }{figure.caption.4}{}}
-\newlabel{tab:misprediction}{{2}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.5}{}}
-\newlabel{tab:mispredictions}{{2}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.5}{}}
-\newlabel{fig:venn}{{4}{4}{Overlap in misclassifications of the CNN and the \textit {combined} GP model.\relax }{figure.caption.6}{}}
-\newlabel{fig:difficult}{{5}{5}{An example of a truly difficult image that both models fail on. The green bar represents the true class, while the tallest red one is the predicted class.\relax }{figure.caption.7}{}}
-\newlabel{sec:mnist:hybridization}{{5.5}{5}{}{subsection.5.5}{}}
-\newlabel{sec:mnist:hybridization:criteria}{{5.5.1}{5}{}{subsubsection.5.5.1}{}}
-\newlabel{fig:mnist:mismatch}{{6}{5}{Examining cases of misclassifications. The left column corresponds to one of the 16 examples the CNN classified incorrectly, while the right column stems from the GP's incorrect classifications. With the right heuristic these case, and others, may be salvageable.\relax }{figure.caption.8}{}}
+\newlabel{fig:mnist-variances}{{2}{3}{Distribution of Variances for both incorrect and correctly classified examples.\relax }{figure.caption.3}{}}
+\newlabel{tab:statsig}{{2}{4}{Statistically Significant Predictions on MNIST using 95\% confidence bounds for the \textit {combined} kernel.\relax }{table.caption.4}{}}
+\newlabel{sec:svgp-variance}{{5.4}{4}{}{subsection.5.4}{}}
+\newlabel{fig:all_variances}{{3}{4}{Plotting class probability versus variance on the standard MNIST dataset. They are totally correlated and thus one completely determines the other.\relax }{figure.caption.5}{}}
+\newlabel{tab:misprediction}{{3}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.6}{}}
+\newlabel{tab:mispredictions}{{3}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.6}{}}
+\newlabel{fig:venn}{{4}{4}{Overlap in misclassifications of the CNN and the \textit {combined} GP model.\relax }{figure.caption.7}{}}
 \citation{basu2017learning}
-\newlabel{fig:nmist:vars}{{8}{6}{Variances across the n-MNIST dataset\relax }{figure.caption.11}{}}
+\newlabel{fig:difficult}{{5}{5}{An example of a truly difficult image that both models fail on. The green bar represents the true class, while the tallest red one is the predicted class.\relax }{figure.caption.8}{}}
+\newlabel{sec:mnist:hybridization}{{5.6}{5}{}{subsection.5.6}{}}
+\newlabel{sec:mnist:hybridization:criteria}{{5.6.1}{5}{}{subsubsection.5.6.1}{}}
+\newlabel{fig:mnist:mismatch}{{6}{5}{Examining cases of misclassifications. The left column corresponds to one of the 16 examples the CNN classified incorrectly, while the right column stems from the GP's incorrect classifications. With the right heuristic these case, and others, may be salvageable.\relax }{figure.caption.9}{}}
+\citation{papernot2017cleverhans}
+\newlabel{tab:nmnist:accuracies}{{4}{6}{Accuracy across all models and n-MNIST data sets.\relax }{table.caption.10}{}}
+\newlabel{fig:nmist:vars}{{8}{6}{Variances across the n-MNIST dataset\relax }{figure.caption.12}{}}
+\newlabel{sec:adversarial}{{7}{6}{}{section.7}{}}
 \citation{Bradshaw2017}
-\newlabel{tab:adv:accuracies}{{3}{7}{Performance across all models and n-MNIST data sets.\relax }{table.caption.10}{}}
-\newlabel{sec:adversarial}{{7}{7}{}{section.7}{}}
-\newlabel{tab:adv:accuracies}{{4}{7}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.12}{}}
-\newlabel{fig:adv:epsilons}{{9}{7}{Classification Accuracies on FGSM attacked MNIST images across varying $\epsilon $\relax }{figure.caption.13}{}}
+\newlabel{tab:adv:accuracies}{{5}{7}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.13}{}}
+\newlabel{tab:adv_statsig}{{6}{7}{Statistically Significant Predictions on Perturbed MNIST using 95\% confidence bounds.\relax }{table.caption.14}{}}
+\newlabel{fig:adv:epsilons}{{9}{7}{Classification Accuracies on FGSM attacked MNIST images across varying $\epsilon $\relax }{figure.caption.15}{}}
 \newlabel{sec:discussion}{{8}{7}{}{section.8}{}}
+\citation{scheirer2013toward}
 \citation{abdessalem2017automatic}
 \citation{duvenaud2014automatic}
 \bibdata{gp_cnn_bibliography.bib}
@@ -80,10 +84,12 @@
 \bibcite{lecun1998gradient}{{12}{1998}{{LeCun et~al.}}{{LeCun, Bottou, Bengio, and Haffner}}}
 \bibcite{mackay1992practical}{{13}{1992}{{MacKay~David}}{{}}}
 \bibcite{GPflow2017}{{14}{2017}{{Matthews et~al.}}{{Matthews, {van der Wilk}, Nickson, Fujii, {Boukouvalas}, {Le{\'o}n-Villagr{\'a}}, Ghahramani, and Hensman}}}
-\bibcite{papernot2016limitations}{{15}{2016}{{Papernot et~al.}}{{Papernot, McDaniel, Jha, Fredrikson, Celik, and Swami}}}
-\bibcite{rasmussen2006gaussian}{{16}{2006}{{Rasmussen \& Williams}}{{Rasmussen and Williams}}}
-\bibcite{samangouei2018defense}{{17}{2018}{{Samangouei et~al.}}{{Samangouei, Kabkab, and Chellappa}}}
-\bibcite{szegedy2013intriguing}{{18}{2013}{{Szegedy et~al.}}{{Szegedy, Zaremba, Sutskever, Bruna, Erhan, Goodfellow, and Fergus}}}
-\bibcite{zantedeschi2017efficient}{{19}{2017}{{Zantedeschi et~al.}}{{Zantedeschi, Nicolae, and Rawat}}}
-\bibcite{zhu2017deep}{{20}{2017}{{Zhu \& Laptev}}{{Zhu and Laptev}}}
+\bibcite{papernot2017cleverhans}{{15}{2017}{{Nicolas~Papernot}}{{}}}
+\bibcite{paass1993assessing}{{16}{1993}{{Paass}}{{}}}
+\bibcite{papernot2016limitations}{{17}{2016}{{Papernot et~al.}}{{Papernot, McDaniel, Jha, Fredrikson, Celik, and Swami}}}
+\bibcite{rasmussen2006gaussian}{{18}{2006}{{Rasmussen \& Williams}}{{Rasmussen and Williams}}}
+\bibcite{samangouei2018defense}{{19}{2018}{{Samangouei et~al.}}{{Samangouei, Kabkab, and Chellappa}}}
+\bibcite{scheirer2013toward}{{20}{2013}{{Scheirer et~al.}}{{Scheirer, de~Rezende~Rocha, Sapkota, and Boult}}}
+\bibcite{szegedy2013intriguing}{{21}{2013}{{Szegedy et~al.}}{{Szegedy, Zaremba, Sutskever, Bruna, Erhan, Goodfellow, and Fergus}}}
+\bibcite{zantedeschi2017efficient}{{22}{2017}{{Zantedeschi et~al.}}{{Zantedeschi, Nicolae, and Rawat}}}
 \bibstyle{icml2018}

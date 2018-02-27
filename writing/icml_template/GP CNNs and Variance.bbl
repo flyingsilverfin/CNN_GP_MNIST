@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -98,6 +98,20 @@ Matthews, Alexander G. de~G., {van der Wilk}, Mark, Nickson, Tom, Fujii,
   (40):\penalty0 1--6, apr 2017.
 \newblock URL \url{http://jmlr.org/papers/v18/16-537.html}.
 
+\bibitem[Nicolas~Papernot(2017)]{papernot2017cleverhans}
+Nicolas~Papernot, Nicholas~Carlini, Ian Goodfellow Reuben Feinman Fartash
+  Faghri Alexander Matyasko Karen Hambardzumyan Yi-Lin Juang Alexey Kurakin
+  Ryan Sheatsley Abhibhav Garg Yen-Chen~Lin.
+\newblock cleverhans v2.0.0: an adversarial machine learning library.
+\newblock \emph{arXiv preprint arXiv:1610.00768}, 2017.
+
+\bibitem[Paass(1993)]{paass1993assessing}
+Paass, Gerhard.
+\newblock Assessing and improving neural network predictions by the bootstrap
+  algorithm.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pp.\
+  196--203, 1993.
+
 \bibitem[Papernot et~al.(2016)Papernot, McDaniel, Jha, Fredrikson, Celik, and
   Swami]{papernot2016limitations}
 Papernot, Nicolas, McDaniel, Patrick, Jha, Somesh, Fredrikson, Matt, Celik,
@@ -119,6 +133,14 @@ Samangouei, Pouya, Kabkab, Maya, and Chellappa, Rama.
   generative models.
 \newblock 2018.
 
+\bibitem[Scheirer et~al.(2013)Scheirer, de~Rezende~Rocha, Sapkota, and
+  Boult]{scheirer2013toward}
+Scheirer, Walter~J, de~Rezende~Rocha, Anderson, Sapkota, Archana, and Boult,
+  Terrance~E.
+\newblock Toward open set recognition.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 35\penalty0 (7):\penalty0 1757--1772, 2013.
+
 \bibitem[Szegedy et~al.(2013)Szegedy, Zaremba, Sutskever, Bruna, Erhan,
   Goodfellow, and Fergus]{szegedy2013intriguing}
 Szegedy, Christian, Zaremba, Wojciech, Sutskever, Ilya, Bruna, Joan, Erhan,
@@ -132,11 +154,5 @@ Zantedeschi, Valentina, Nicolae, Maria-Irina, and Rawat, Ambrish.
 \newblock Efficient defenses against adversarial attacks.
 \newblock In \emph{Proceedings of the 10th ACM Workshop on Artificial
   Intelligence and Security}, pp.\  39--49. ACM, 2017.
-
-\bibitem[Zhu \& Laptev(2017)Zhu and Laptev]{zhu2017deep}
-Zhu, Lingxue and Laptev, Nikolay.
-\newblock Deep and confident prediction for time series at uber.
-\newblock In \emph{Data Mining Workshops (ICDMW), 2017 IEEE International
-  Conference on}, pp.\  103--110. IEEE, 2017.
 
 \end{thebibliography}
