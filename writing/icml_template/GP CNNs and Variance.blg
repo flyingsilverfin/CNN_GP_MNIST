@@ -13,45 +13,45 @@ Warning--I didn't find a database entry for "DudaHart2nd"
 Warning--empty journal in Bradshaw2017
 Warning--empty journal in hensman2015scalable
 Warning--empty journal in samangouei2018defense
-You've used 19 entries,
+You've used 20 entries,
             2773 wiz_defined-function locations,
-            712 strings with 8755 characters,
-and the built_in function-call counts, 10353 in all, are:
-= -- 920
-> -- 671
+            717 strings with 8918 characters,
+and the built_in function-call counts, 10479 in all, are:
+= -- 925
+> -- 683
 < -- 14
-+ -- 227
-- -- 207
-* -- 827
-:= -- 1557
-add.period$ -- 64
-call.type$ -- 19
-change.case$ -- 125
-chr.to.int$ -- 18
-cite$ -- 41
-duplicate$ -- 472
-empty$ -- 785
-format.name$ -- 231
-if$ -- 2210
-int.to.chr$ -- 2
++ -- 230
+- -- 210
+* -- 836
+:= -- 1593
+add.period$ -- 66
+call.type$ -- 20
+change.case$ -- 127
+chr.to.int$ -- 20
+cite$ -- 43
+duplicate$ -- 478
+empty$ -- 793
+format.name$ -- 237
+if$ -- 2223
+int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 18
-newline$ -- 105
-num.names$ -- 76
-pop$ -- 274
+missing$ -- 19
+newline$ -- 110
+num.names$ -- 80
+pop$ -- 276
 preamble$ -- 1
-purify$ -- 106
+purify$ -- 109
 quote$ -- 0
-skip$ -- 386
+skip$ -- 394
 stack$ -- 0
-substring$ -- 346
-swap$ -- 92
-text.length$ -- 8
+substring$ -- 330
+swap$ -- 84
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 209
+type$ -- 215
 warning$ -- 3
-while$ -- 86
+while$ -- 87
 width$ -- 0
-write$ -- 252
+write$ -- 264
 (There were 10 warnings)
