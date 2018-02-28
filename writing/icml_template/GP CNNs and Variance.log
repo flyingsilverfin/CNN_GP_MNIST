@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.23)  27 FEB 2018 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.23)  28 FEB 2018 10:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -458,13 +458,13 @@ LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 84.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 86.
-<figures/gp_basic.pdf, id=15, pagebox=cropbox, 834.3515pt x 294.87352pt>
+<figures/gp_basic.pdf, id=11, pagebox=cropbox, 834.3515pt x 294.87352pt>
 File: figures/gp_basic.pdf Graphic file (type pdf)
 <use figures/gp_basic.pdf>
-Package pdftex.def Info: figures/gp_basic.pdf  used on input line 132. on input
- line 132.
+Package pdftex.def Info: figures/gp_basic.pdf  used on input line 135. on input
+ line 135.
 Package pdftex.def Info: Requested size: 234.8775pt x 83.00946pt on input line 
-132.
+135.
  [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -473,24 +473,24 @@ Package pdftex.def Info: Requested size: 234.8775pt x 83.00946pt on input line
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 []\OT1/ptm/m/n/10 (+20) An al-ter-na-tive ap-proach, Bayesian neu-ral net-
  []
 
 
-Underfull \hbox (badness 3396) in paragraph at lines 184--185
+Underfull \hbox (badness 3396) in paragraph at lines 188--189
 \OT1/ptm/m/n/10 (+20) works ([][]MacKay David[][], [][]1992[][]), place a dis-t
 ri-bu-tion
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 184--185
+Underfull \hbox (badness 1210) in paragraph at lines 188--189
 \OT1/ptm/m/n/10 (+20) cal-cu-lat-ing the full pos-te-rior dis-tri-bu-tion the-o
 -ret-i-cally
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 205--206
+Underfull \hbox (badness 2326) in paragraph at lines 209--210
 []\OT1/ptm/m/n/10 (+20) The core li-braries used were Keras ([][]Chol-let et al
 .[][],
  []
@@ -500,141 +500,140 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2 <./figures/gp_basic.pdf>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/sc' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 254.
-<figures/mnist/variances_combined.pdf, id=127, pagebox=cropbox, 627.5806pt x 33
+(Font)              Font shape `OT1/ptm/b/sc' tried instead on input line 258.
+<figures/mnist/variances_combined.pdf, id=123, pagebox=cropbox, 627.5806pt x 33
 6.39427pt>
 File: figures/mnist/variances_combined.pdf Graphic file (type pdf)
 <use figures/mnist/variances_combined.pdf>
 Package pdftex.def Info: figures/mnist/variances_combined.pdf  used on input li
-ne 297. on input line 297.
+ne 301. on input line 301.
 Package pdftex.def Info: Requested size: 234.8775pt x 125.89603pt on input line
- 297.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3 <./figures/mnist/variances_combined.pdf>]
-<figures/mnist/mu_versus_var_combined.pdf, id=180, pagebox=cropbox, 419.52483pt
+ 301.
+ [3 <./figures/mnist/variances_combined.pdf>]
+<figures/mnist/mu_versus_var_combined.pdf, id=176, pagebox=cropbox, 419.52483pt
  x 327.20317pt>
 File: figures/mnist/mu_versus_var_combined.pdf Graphic file (type pdf)
 <use figures/mnist/mu_versus_var_combined.pdf>
 Package pdftex.def Info: figures/mnist/mu_versus_var_combined.pdf  used on inpu
-t line 341. on input line 341.
+t line 344. on input line 344.
 Package pdftex.def Info: Requested size: 234.8775pt x 183.19258pt on input line
- 341.
-<figures/mnist/venn-Linear-Matern32-Kernel-GP.pdf, id=182, pagebox=cropbox, 245
+ 344.
+<figures/mnist/venn-Linear-Matern32-Kernel-GP.pdf, id=178, pagebox=cropbox, 245
 .51726pt x 236.9707pt>
 File: figures/mnist/venn-Linear-Matern32-Kernel-GP.pdf Graphic file (type pdf)
 <use figures/mnist/venn-Linear-Matern32-Kernel-GP.pdf>
 Package pdftex.def Info: figures/mnist/venn-Linear-Matern32-Kernel-GP.pdf  used
- on input line 402. on input line 402.
+ on input line 405. on input line 405.
 Package pdftex.def Info: Requested size: 122.75832pt x 118.48506pt on input lin
-e 402.
-<figures/mnist/both_incorrect_example_linear.pdf, id=185, pagebox=cropbox, 304.
+e 405.
+<figures/mnist/both_incorrect_example_linear.pdf, id=181, pagebox=cropbox, 304.
 86974pt x 301.81143pt>
 File: figures/mnist/both_incorrect_example_linear.pdf Graphic file (type pdf)
 <use figures/mnist/both_incorrect_example_linear.pdf>
 Package pdftex.def Info: figures/mnist/both_incorrect_example_linear.pdf  used 
-on input line 412. on input line 412.
+on input line 415. on input line 415.
 Package pdftex.def Info: Requested size: 56.9055pt x 56.3316pt on input line 41
-2.
-<figures/mnist/both_incorrect_cnn_probs.pdf, id=186, pagebox=cropbox, 415.10205
+5.
+<figures/mnist/both_incorrect_cnn_probs.pdf, id=182, pagebox=cropbox, 415.10205
 pt x 330.68494pt>
 File: figures/mnist/both_incorrect_cnn_probs.pdf Graphic file (type pdf)
 <use figures/mnist/both_incorrect_cnn_probs.pdf>
 Package pdftex.def Info: figures/mnist/both_incorrect_cnn_probs.pdf  used on in
-put line 416. on input line 416.
+put line 419. on input line 419.
 Package pdftex.def Info: Requested size: 125.0066pt x 99.58464pt on input line 
-416.
-<figures/mnist/both_incorrect_gp_linear_probs.pdf, id=187, pagebox=cropbox, 415
+419.
+<figures/mnist/both_incorrect_gp_linear_probs.pdf, id=183, pagebox=cropbox, 415
 .10205pt x 330.68494pt>
 File: figures/mnist/both_incorrect_gp_linear_probs.pdf Graphic file (type pdf)
 <use figures/mnist/both_incorrect_gp_linear_probs.pdf>
 Package pdftex.def Info: figures/mnist/both_incorrect_gp_linear_probs.pdf  used
- on input line 418. on input line 418.
+ on input line 421. on input line 421.
 Package pdftex.def Info: Requested size: 125.0066pt x 99.58464pt on input line 
-418.
+421.
 
-Overfull \hbox (1.90001pt too wide) in paragraph at lines 410--420
+Overfull \hbox (1.90001pt too wide) in paragraph at lines 413--423
 []$[]$ $[]$ 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/mnist/cnn_incorrect_only_example_linear.pdf, id=188, pagebox=cropbox, 
+<figures/mnist/cnn_incorrect_only_example_linear.pdf, id=184, pagebox=cropbox, 
 304.86974pt x 301.81143pt>
 File: figures/mnist/cnn_incorrect_only_example_linear.pdf Graphic file (type pd
 f)
 <use figures/mnist/cnn_incorrect_only_example_linear.pdf>
 Package pdftex.def Info: figures/mnist/cnn_incorrect_only_example_linear.pdf  u
-sed on input line 431. on input line 431.
+sed on input line 434. on input line 434.
 Package pdftex.def Info: Requested size: 28.45274pt x 28.1658pt on input line 4
-31.
+34.
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--431
+Underfull \hbox (badness 10000) in paragraph at lines 434--434
 \OT1/ptm/m/n/9 (+20) Mis-clas-
  []
 
-<figures/mnist/cnn_incorrect_only_cnn_probs.pdf, id=189, pagebox=cropbox, 415.1
+<figures/mnist/cnn_incorrect_only_cnn_probs.pdf, id=185, pagebox=cropbox, 415.1
 0205pt x 330.68494pt>
 File: figures/mnist/cnn_incorrect_only_cnn_probs.pdf Graphic file (type pdf)
 <use figures/mnist/cnn_incorrect_only_cnn_probs.pdf>
 Package pdftex.def Info: figures/mnist/cnn_incorrect_only_cnn_probs.pdf  used o
-n input line 433. on input line 433.
+n input line 436. on input line 436.
 Package pdftex.def Info: Requested size: 112.38829pt x 89.53337pt on input line
- 433.
-<figures/mnist/cnn_incorrect_only_gp_linear_probs.pdf, id=190, pagebox=cropbox,
+ 436.
+<figures/mnist/cnn_incorrect_only_gp_linear_probs.pdf, id=186, pagebox=cropbox,
  415.10205pt x 330.68494pt>
 File: figures/mnist/cnn_incorrect_only_gp_linear_probs.pdf Graphic file (type p
 df)
 <use figures/mnist/cnn_incorrect_only_gp_linear_probs.pdf>
 Package pdftex.def Info: figures/mnist/cnn_incorrect_only_gp_linear_probs.pdf  
-used on input line 436. on input line 436.
+used on input line 439. on input line 439.
 Package pdftex.def Info: Requested size: 112.38829pt x 89.53337pt on input line
- 436.
-<figures/mnist/gp_incorrect_only_example_linear.pdf, id=191, pagebox=cropbox, 3
+ 439.
+<figures/mnist/gp_incorrect_only_example_linear.pdf, id=187, pagebox=cropbox, 3
 04.86974pt x 301.81143pt>
 File: figures/mnist/gp_incorrect_only_example_linear.pdf Graphic file (type pdf
 )
 <use figures/mnist/gp_incorrect_only_example_linear.pdf>
 Package pdftex.def Info: figures/mnist/gp_incorrect_only_example_linear.pdf  us
-ed on input line 442. on input line 442.
+ed on input line 445. on input line 445.
 Package pdftex.def Info: Requested size: 28.45274pt x 28.1658pt on input line 4
-42.
+45.
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--442
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 []\OT1/ptm/m/n/9 (+20) (d) |GP
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 442--442
+Underfull \hbox (badness 10000) in paragraph at lines 445--445
 \OT1/ptm/m/n/9 (+20) Mis-clas-
  []
 
-<figures/mnist/gp_incorrect_only_cnn_probs.pdf, id=192, pagebox=cropbox, 415.10
+<figures/mnist/gp_incorrect_only_cnn_probs.pdf, id=188, pagebox=cropbox, 415.10
 205pt x 330.68494pt>
 File: figures/mnist/gp_incorrect_only_cnn_probs.pdf Graphic file (type pdf)
 <use figures/mnist/gp_incorrect_only_cnn_probs.pdf>
 Package pdftex.def Info: figures/mnist/gp_incorrect_only_cnn_probs.pdf  used on
- input line 444. on input line 444.
+ input line 447. on input line 447.
 Package pdftex.def Info: Requested size: 112.38829pt x 89.53337pt on input line
- 444.
-<figures/mnist/gp_incorrect_only_gp_linear_probs.pdf, id=193, pagebox=cropbox, 
+ 447.
+<figures/mnist/gp_incorrect_only_gp_linear_probs.pdf, id=189, pagebox=cropbox, 
 415.10205pt x 330.68494pt>
 File: figures/mnist/gp_incorrect_only_gp_linear_probs.pdf Graphic file (type pd
 f)
 <use figures/mnist/gp_incorrect_only_gp_linear_probs.pdf>
 Package pdftex.def Info: figures/mnist/gp_incorrect_only_gp_linear_probs.pdf  u
-sed on input line 447. on input line 447.
+sed on input line 450. on input line 450.
 Package pdftex.def Info: Requested size: 112.38829pt x 89.53337pt on input line
- 447.
+ 450.
 [4 <./figures/mnist/mu_versus_var_combined.pdf> <./figures/mnist/venn-Linear-Ma
 tern32-Kernel-GP.pdf
 
 pdfTeX warning: pdflatex (file ./figures/mnist/venn-Linear-Matern32-Kernel-GP.p
 df): PDF inclusion: multiple pdfs with page group included in a single page
 >]
+Underfull \vbox (badness 1442) has occurred while \output is active []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5 <./figures/mnist/both_incorrect_example_linear.pdf> <./figures/mnist/both_i
@@ -672,28 +671,28 @@ pdfTeX warning: pdflatex (file ./figures/mnist/gp_incorrect_only_cnn_probs.pdf)
 pdfTeX warning: pdflatex (file ./figures/mnist/gp_incorrect_only_gp_linear_prob
 s.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<./images/awgn_95.png, id=556, 140.525pt x 140.525pt>
+<./images/awgn_95.png, id=552, 140.525pt x 140.525pt>
 File: ./images/awgn_95.png Graphic file (type png)
 <use ./images/awgn_95.png>
-Package pdftex.def Info: ./images/awgn_95.png  used on input line 523. on input
- line 523.
+Package pdftex.def Info: ./images/awgn_95.png  used on input line 526. on input
+ line 526.
 Package pdftex.def Info: Requested size: 70.46396pt x 70.46387pt on input line 
-523.
-<./images/motion_blur_15_5.png, id=557, 140.525pt x 140.525pt>
+526.
+<./images/motion_blur_15_5.png, id=553, 140.525pt x 140.525pt>
 File: ./images/motion_blur_15_5.png Graphic file (type png)
 <use ./images/motion_blur_15_5.png>
-Package pdftex.def Info: ./images/motion_blur_15_5.png  used on input line 527.
- on input line 527.
-Package pdftex.def Info: Requested size: 70.46396pt x 70.46387pt on input line 
-527.
-<./images/contrast_2_12.png, id=558, 140.525pt x 140.525pt>
-File: ./images/contrast_2_12.png Graphic file (type png)
-<use ./images/contrast_2_12.png>
-Package pdftex.def Info: ./images/contrast_2_12.png  used on input line 530. on
- input line 530.
+Package pdftex.def Info: ./images/motion_blur_15_5.png  used on input line 530.
+ on input line 530.
 Package pdftex.def Info: Requested size: 70.46396pt x 70.46387pt on input line 
 530.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 532.
+<./images/contrast_2_12.png, id=554, 140.525pt x 140.525pt>
+File: ./images/contrast_2_12.png Graphic file (type png)
+<use ./images/contrast_2_12.png>
+Package pdftex.def Info: ./images/contrast_2_12.png  used on input line 533. on
+ input line 533.
+Package pdftex.def Info: Requested size: 70.46396pt x 70.46387pt on input line 
+533.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 535.
 
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -702,43 +701,43 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<./figures/nmnist/awgn_variances_combined.pdf, id=564, pagebox=cropbox, 627.580
+<./figures/nmnist/awgn_variances_combined.pdf, id=560, pagebox=cropbox, 627.580
 6pt x 336.39427pt>
 File: ./figures/nmnist/awgn_variances_combined.pdf Graphic file (type pdf)
 <use ./figures/nmnist/awgn_variances_combined.pdf>
 Package pdftex.def Info: ./figures/nmnist/awgn_variances_combined.pdf  used on 
-input line 562. on input line 562.
+input line 565. on input line 565.
 Package pdftex.def Info: Requested size: 234.8775pt x 125.89603pt on input line
- 562.
+ 565.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 562--563
+Overfull \hbox (5.0pt too wide) in paragraph at lines 565--566
  [][] 
  []
 
-<./figures/nmnist/blur_variances_combined.pdf, id=565, pagebox=cropbox, 627.580
+<./figures/nmnist/blur_variances_combined.pdf, id=561, pagebox=cropbox, 627.580
 6pt x 336.39427pt>
 File: ./figures/nmnist/blur_variances_combined.pdf Graphic file (type pdf)
 <use ./figures/nmnist/blur_variances_combined.pdf>
 Package pdftex.def Info: ./figures/nmnist/blur_variances_combined.pdf  used on 
-input line 567. on input line 567.
+input line 570. on input line 570.
 Package pdftex.def Info: Requested size: 234.8775pt x 125.89603pt on input line
- 567.
+ 570.
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 567--568
+Overfull \hbox (5.0pt too wide) in paragraph at lines 570--571
  [][] 
  []
 
-<./figures/nmnist/lowcontrast_variances_combined.pdf, id=566, pagebox=cropbox, 
+<./figures/nmnist/lowcontrast_variances_combined.pdf, id=562, pagebox=cropbox, 
 627.5806pt x 336.39427pt>
 File: ./figures/nmnist/lowcontrast_variances_combined.pdf Graphic file (type pd
 f)
 <use ./figures/nmnist/lowcontrast_variances_combined.pdf>
 Package pdftex.def Info: ./figures/nmnist/lowcontrast_variances_combined.pdf  u
-sed on input line 571. on input line 571.
+sed on input line 574. on input line 574.
 Package pdftex.def Info: Requested size: 234.8775pt x 125.89603pt on input line
- 571.
+ 574.
 
-Overfull \hbox (2.5pt too wide) in paragraph at lines 571--572
+Overfull \hbox (2.5pt too wide) in paragraph at lines 574--575
  [][] 
  []
 
@@ -759,14 +758,14 @@ DF inclusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex (file ./figures/nmnist/lowcontrast_variances_combined.
 pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<./figures/adversarial/epsilons.pdf, id=715, pagebox=cropbox, 462.52798pt x 346
+<./figures/adversarial/epsilons.pdf, id=712, pagebox=cropbox, 462.52798pt x 346
 .89601pt>
 File: ./figures/adversarial/epsilons.pdf Graphic file (type pdf)
 <use ./figures/adversarial/epsilons.pdf>
 Package pdftex.def Info: ./figures/adversarial/epsilons.pdf  used on input line
- 645. on input line 645.
+ 648. on input line 648.
 Package pdftex.def Info: Requested size: 234.8775pt x 176.15768pt on input line
- 645.
+ 648.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -774,28 +773,28 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--690
+Underfull \hbox (badness 10000) in paragraph at lines 694--695
 [][][]$\OT1/pcr/m/n/10 https : / / github . com / flyingsilverfin / CNN _
  []
 
 (./GP CNNs and Variance.bbl [8])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 711.
  [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 711.
  (./GP CNNs and Variance.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 711.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 711.
 Package rerunfilecheck Info: File `"GP CNNs and Variance".out' has not changed.
 
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 711.
  ) 
 Here is how much of TeX's memory you used:
- 9549 strings out of 492990
- 151216 string characters out of 6132620
- 272978 words of memory out of 5000000
+ 9560 strings out of 492990
+ 151320 string characters out of 6132620
+ 272934 words of memory out of 5000000
  12612 multiletter control sequences out of 15000+600000
- 41936 words of font info for 213 fonts, out of 8000000 for 9000
+ 42532 words of font info for 220 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,12n,49p,996b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -806,16 +805,18 @@ ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
 /2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2
 017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/tim
-es/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a
-.pfb>
-Output written on "GP CNNs and Variance.pdf" (9 pages, 470495 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2017/texmf-d
+ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/ur
+w/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+
+Output written on "GP CNNs and Variance.pdf" (9 pages, 482129 bytes).
 PDF statistics:
- 875 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
+ 879 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
  99 named destinations out of 1000 (max. 500000)
  38501 words of extra memory for PDF output out of 42996 (max. 10000000)
 

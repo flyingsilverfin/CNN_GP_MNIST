@@ -109,7 +109,7 @@ Convolutional Neural Nets (CNNs) have seen a steep rise in use for a wide range 
 
 This work combines CNNs with Gaussian Processes (GPs), using features extracted by the CNN as input to a GP. This combination takes advantage of neural networks' ability to approximate high dimensional data efficiently and reduce it to a lower dimensional representation; GPs can then produce Bayesian uncertainty estimates along with predictions.
 
-The goal of this work is to explore how useful the variance produced by a GP is, discussing how it might be useful to users, and in enhancing prediction accuracy. Focus will be on image classification using the MNIST~\cite{lecun1998gradient} and N-MNIST~\cite{basu2017learning} datasets, along with adversarially perturbed MNIST images.
+Focusing on MNIST datasets, this work contributes an analysis of variance and statistically significant predictions, proposes a method for ensembling CNN \textit{softmax} and GP predictions steered by prediction variance, and discusses promising future research directions.
 
 
 \section{Background}
@@ -121,24 +121,28 @@ CNNs are normally used for classification. The following \textit{softmax} activa
 
 \[ \sigma(z)_j = \frac{e^{z_j}}{\sum_{k=1}^{k=m}e^{z_j}} \]
 
-Combined with categorical-cross entropy loss during training, the resulting values between 0 and 1 from each of the $m$ units represent the posterior distribution over the classes \cite{bridle1990probabilistic}. In other words, we obtain the probability of any class using a fully connected softmax layer. Note that this method reinforces large values and squashes small ones due to the exponentiation, exaggerating differences between classes and not taking into account absolute activation prior to the softmax. 
+Combined with categorical-cross entropy loss during training, the resulting values between 0 and 1 from each of the $m$ units represent the posterior distribution over $m$ classes \cite{bridle1990probabilistic}. In other words, we obtain the probability of any class using a fully connected softmax layer trained this way. Note that this method reinforces large values and squashes small ones due to the exponentiation, exaggerating differences between classes and not taking into account absolute activation prior to the softmax. 
 
 \subsection{Gaussian Processes}
 \label{sec:background:gp}
+
+
+
 Gaussian processes are non-parametrized models of functions, defined by a mean and covariance function. The latter determines how related two points in space are -- generally the further away, the less related. The covariance function is built out of a set of \textit{kernels}, and generates a covariance matrix. By incorporating the mean and covariance functions, along with training data, GPs predict both a mean and a variance when given input points. For a simplified example see Figure \ref{fig:gp:basic}.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\hsize]{figures/gp_basic.pdf}
-\caption{A simple one-dimensional GP regression. The dashed lines represent two standard deviations from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.}
+\caption{A simple 1-D GP regression. The dashed lines represent $\pm2\sigma$ from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.}
 \label{fig:gp:basic}
 \end{figure}
+
 
 By design, trained Gaussian processes have lower variance around known data, while moving away from these points results in much higher uncertainty. This is the property we are most interested in exploiting: when the variance is high, we are in a relatively unknown region of the input space and should put little trust into the predictions.
 
 Another key benefit of GPs is that little hyperparameter tuning is needed -- since the model is fully Bayesian, parameters can be learned directly by maximizing marginal likelihood. However, traditional GPs are costly to train -- covariance matrices are $O(n^2)$ in size, and inversion and decomposition operations have an $O(n^3)$ cost, where $n$ is the number of training samples.
 
-To deal with the issue of scalability\footnote{The training data here is a 60000x128 vector which is formed into a square matrix, far exceeding what could fit into memory}, various approximation methods have been developed. One approach that is used here is called Sparse Variational Gaussian Processes \cite{hensman2015scalable}. This classification approach effectively uses a set of \textit{inducing points} optimized from the training data as an estimate of the full data set; these are then used to fit a GP.
+To deal with the resulting issue of scalability\footnote{The training data here is a 60000x128 vector which is formed into a square matrix, far exceeding what could fit into memory}, various approximation methods have been developed. One approach that is used here is called Sparse Variational Gaussian Processes \cite{hensman2015scalable}. This classification approach effectively uses a set of \textit{inducing points} optimized from the training data as an estimate of the full data set; these are then used to fit a GP.
 
 Gaussian processes classification is described in \citet*{rasmussen2006gaussian}. This book also describes a variety of kernels, the choice of which strongly affects performance -- some are explored in Section~\ref{sec:mnist}. 
 
@@ -183,7 +187,7 @@ One basic idea is to train an ensemble of neural networks, using the set of pred
 
 An alternative approach, Bayesian neural networks~\cite{mackay1992practical}, place a distribution over each parameter in the network. While this makes calculating the full posterior distribution theoretically possible, it is practically intractable. Variational methods, and more recent work making inference backpropagation and GPU compatible~\cite{blundell2015weight} have made Bayesian NNs more realistic, though they are still an expensive approach. 
 
-Alternative approaches exist that are more promising. One recent contribution is a dropout-based approach~\cite{gal2016dropout}, using dropout at \textit{test} time to sample a variety of predictions and computing a mean and variance from this. This is method provides principled, but  inherently sampling-based results. Thus the produced mean and variances are subject to fluctuations and highly dependent on the number of samples drawn and the size of the network.
+Alternative approaches exist that are more promising. One recent contribution is a dropout-based approach~\cite{gal2016dropout}, using dropout at \textit{test} time to sample a variety of predictions and computing a mean and variance from this. This is method provides principled, but inherently sampling-based results. Thus the produced mean and variances are subject to fluctuations and highly dependent on the size of the network.
 
 The most direct predecessor to this work is \citet{Bradshaw2017}, which investigate GPDNNs (Gaussian Process Deep Neural Nets). However, the authors emphasize end-to-end trained models, comparing neural nets with softmax classification to ones with a GP replacing the softmax layer and retraining from scratch. In contrast, this work explores using pre-trained neural nets in combination with Gaussian processes which are trained post-hoc. 
 
@@ -207,11 +211,11 @@ The core libraries used were Keras~\cite{chollet2015keras} with a TensorFlow\foo
 The models tested are
 \begin{enumerate}
 \item Keras MNIST CNN trained on 60,000 training images.
-\item 3 different GPs trained on features extracted from the CNN's second to last layer.
+\item 3 different GPs trained on features extracted from the CNN.
 \item A hybridized model merging CNN and GP predictions, motivated and developed in Section~\ref{sec:mnist:hybridization}.
 \end{enumerate} 
 
-The CNN structure is as follows. A convolutional layer with 32 filters, using 3x3 pixel kernels is followed by a 64 channel convolutional layer with 3x3 pixel kernels. This is followed by max pooling with dropout to avoid overfitting. The resulting outputs are flattened into a 1D array and connected to a 128-node layer with dropout. The final layer is a 10-node \textit{softmax} activated fully connected layer. All other layers are \textit{relu} activated.
+The CNN structure is as follows. A convolutional layer with 32 filters, using 3x3 pixel kernels is followed by a 64 channel convolutional layer with 3x3 pixel kernels. Max pooling with dropout is applied to avoid overfitting. The resulting outputs are flattened into a 1D array and connected to a 128-node layer with dropout. The final layer is a 10-node \textit{softmax} activated fully connected layer. All other layers are \textit{relu} activated.
 
 
 
@@ -305,18 +309,17 @@ This plot clearly shows that the variance of incorrectly predicted classes is sk
 %This is a useful property when discussing interpretability: by presenting the variance to human users, a judgement can be made about how much to trust the predicted class, or whether consideration should be given to other predictions that have lower probability but are within, say, a standard deviation of the most likely class.
 
 \subsection{Statistically Significant Predictions}
-We can determine statistical significance of predictions by setting some probability $a$ we wish to be sure by. This is usually set to $a=95\%$ confidence. This corresponds to an interval $p \pm 1.96*\sigma$, where $p$ is class probability and $\sigma^2$ is variance. Using this, if the top class's interval does not overlap any other we have a statically significant result.
-
+We can combine both probability and variance to determine statistical significance using a two sample t-test. We look for 95\% confidence ($t=1.96$) that the top two predicted classes are different, i.e. the top class is the correct one. Using this we can obtain Table~\ref{tab:statsig}.
 
 \begin{table}[h]
-\caption{Statistically Significant Predictions on MNIST using 95\% confidence bounds for the \textit{combined} kernel.}
+\caption{Statistically Significant Predictions on MNIST using 95\% confidence for the \textit{combined} kernel.}
 \vskip 0.15in
 \begin{center}
 \begin{small}
 \begin{sc}
 \begin{tabular}{lcccr}
 \toprule
-							&  Combined  	\\
+							&  Combined GP 	\\
 \midrule
 \% Significant				& 97.55\%		\\
 \% Correct and Significant  & 99.82\%  		\\
@@ -330,7 +333,7 @@ We can determine statistical significance of predictions by setting some probabi
 \label{tab:statsig}
 \end{table}
 
-From this we can conclude that a user can be extremely sure of statistically significant responses, and should be more weary of insignificant ones, as there is a 28\% of it being incorrect on standard MNIST inputs.
+From this we can conclude that a user can be extremely sure of statistically significant responses being correct, and should be more weary of insignificant ones, as there is a 28\% of it being incorrect on standard MNIST inputs.
 
 \subsection{SVGP Variance}
 \label{sec:svgp-variance}
@@ -345,9 +348,9 @@ The GP implementation used in this paper is the sparse variational gaussian proc
 
 The above figure shows that, actually, with this technique and implementation, the class probability completely determines the predicted variance. In fact, a peek into the implementation reveals that variance $\sigma^2$ is calculated from the predicted mean $p$ as $\sigma^2 = p - p^2$.
 
-Note that this observation does not invalidate the usefulness of variance -- it simply says that there is no point getting both mean and variance from the SVGP and analyzing them separately. Calculating the variance and in turn standard deviation is still a useful indicator for explaining results, and later it shall be used to merge \textit{softmax} and GP predictions.
+Note that this observation does not invalidate the usefulness of variance -- it simply says that there is no point getting both mean and variance from the SVGP and analyzing them separately. Calculating the variance, in turn standard deviation, and performing statistical tests are still very useful results. Variance will also be used to merge \textit{softmax} and GP predictions.
 
-A human operator that did not have this information may try to interpret the class probabilities and variances independently. While not harmful on its own, it could certainly lead to confusion and doubt about the system being presented to them.
+A human operator not realizing how these values are tied together may try to interpret the class probabilities and variances independently. While not harmful on its own, it could certainly lead to confusion and doubt about the system being presented to them.
 
 It is tempting to calculate variance from CNN predictions in a similar way. However, there is no mathematical reasoning (that I am aware of) that suggests variances calculated this way have any meaning. On the other hand, GPs are accepted as being mathematically sound, so either using $\sigma^2 = p - p^2$ results in proper variance, or GPFlow contains a faulty implementation.
 
@@ -614,7 +617,7 @@ Hybrid    			& 62.47\%  \\
 Using an $\epsilon=0.2$, all the models show large performance degradations from the 99\% accuracy presented in Section~\ref{sec:mnist:acc}.  Returning to analyzing 95\% confident predictions, we see in Table~\ref{tab:adv_statsig}, we can see that adversarial attacks produce a large number of very confident incorrect predictions, successfully confusing the GP as well as the CNN.
 
 \begin{table}[h]
-\caption{Statistically Significant Predictions on Perturbed MNIST using 95\% confidence bounds.}
+\caption{Statistically Significant Predictions on Perturbed MNIST using 95\% confidence.}
 \vskip 0.15in
 \begin{center}
 \begin{small}
@@ -647,20 +650,22 @@ Previous work by \citet{Bradshaw2017} showed that for GPDNNs, which have GP's tr
 \label{fig:adv:epsilons}
 \end{figure}
 
-Figure~\ref{fig:adv:epsilons} shows, in the best case with \textit{Polynomial} or \textit{Matern12} kernels, at most 5-10\% boosts can be expected as $\epsilon$ becomes large, but generally GPs degrade just as much as the CNN. Thus, GPs do not provide the hoped resistance to adversarial attacks. This is rather sensible since most of the CNN structure is shared between models and producing features for the GP that appear like other classes with high confidence. 
+Figure~\ref{fig:adv:epsilons} shows, in the best case with \textit{Polynomial} or \textit{Matern12} kernels, at most 5-10\% boosts can be expected as $\epsilon$ becomes large, but generally GPs degrade just as much as the CNN. 
+
+From these results we conclude GPs do not provide the hoped resistance to adversarial attacks. This is rather expected, since most of the targeted CNN structure is shared between models and produces features for the GP that appear like an incorrect class. One idea to mitigate this could be to incorporate features from lower levels in the neural network, at the cost of dimensionality.
 
 \section{Discussion}
 \label{sec:discussion}
 
 The best presented use of variance is to identify statistically significant predictions, which users can trust to an extremely high degree. For instance, a system could a statistical test to flag uncertain results for further inspection. This is especially useful in situations where false negatives are costly, such as in the medical field. 
 
-As noted in Section~\ref{sec:svgp-variance}, in this implementation variance is actually just as informative as class probability. This does not mean variance is useless information since we can use it for inter-class statistical tests, as well as presenting it to human users who can easily reason in terms of standard deviations.
+As noted in Section~\ref{sec:svgp-variance}, in this implementation variance is actually just as informative as class probability. This does not mean variance is useless information since we can use it for inter-class statistical tests, as well as presenting it to human users who may find it useful when reasoning about predictions.
 
 An alternative use of variance, the hybridizing approach, was found to provide incremental gains over the \textit{Linear * Mater32} kernel. Unfortunately, it also slightly worsened performance in adversarial situations. It is possible that more consistent accuracy gains are within reach with more sophisticated methods. One obvious approach is to further refine the acceptance criteria described in Section~\ref{sec:mnist:hybridization:criteria}, or experiment with different acceptance parameter values, or even using 3 different parameters, one for each part of the criterion. However, none of these are likely to lead to particularly novel algorithms or dramatically improved results. Even worse, all examples that were rescued with the hybridized approach turned out to be statistically insignificant predictions, so this approach is not useful at all if using statistical tests to eliminate bad predictions in the first place.
 
-As a positive, if only trying to marginally increase accuracy, creating the hybridization is almost free: most of the CNN needs to be evaluated to extract features to feed into the GP. For instance, in TensorFlow, executing the entire CNN and saving an intermediate value incurs almost no cost. If the Gaussian process is going to be executed in $O(n^2)$ anyway, the hybridization is only $O(m)$ (for $m$ classes) more expensive.
+On the other hand, if only trying to marginally increase accuracy, creating the hybridization is almost free: most of the CNN needs to be evaluated to extract features to feed into the GP. For instance, in TensorFlow, executing the entire CNN and saving an intermediate value incurs almost no cost. If the Gaussian process is going to be executed in $O(n^2)$ anyway, the hybridization is only $O(m)$ (for $m$ classes) more expensive.
 
-Whether training the GP at all is worth it is another question: even with sparse variational implementations, GPs still do not scale as well as CNNs, and this investigation has revealed that classification accuracy is generally on par or only slightly better than CNNs. In situations where interpretation is important, it is worth re-evaluating the entire training set to train the GP. However, if interpretability is not a concern, I argue using a GP is not useful. 
+Whether training the GP at all is worth it is another question: even with sparse variational implementations, GPs still do not scale as well as CNNs, and this investigation has revealed that classification accuracy is generally on par or only slightly better than CNNs. Where interpretation and confidence measures are important, it is certainly worth re-evaluating the entire training set to train the GP. However, if this is not a concern, I argue using a GP is not useful.
 
 GPs are also detrimental when dealing with large scale datasets and time-bound execution. A small CNN can be made to execute quickly and at a constant speed regardless of training data size -- GPs predict quadratically in the number of training samples, and even with variational methods are slow to train.
 
@@ -669,7 +674,7 @@ GPs are also detrimental when dealing with large scale datasets and time-bound e
 \subsection{Ensembles}
 Hybridization between a single GP and a CNN ultimately provides unimpressive results. A more interesting idea could be take the entire process a step further: hybridize based on a multitude of kernels, effectively forming an ensemble. 
 
-As mentioned before, each kernel appears to have different strengths, and it may be possible to come up with a heuristic for merging many predictions. Part of such an investigation would be to explore the role of variance. More heuristics could be developed, or reinforcement learning could be used to decide on an optimal decision strategy, though this would be biased toward its training data and be difficult to generalize.
+As mentioned before, each kernel appears to have different strengths, and it may be possible to come up with a heuristic for merging many predictions. Part of such an investigation would be to explore the role of variance. More heuristics could be developed, or reinforcement learning could be used to decide on an optimal decision strategy.
 
 Finally, this entire investigation depends critically on a closed set of examples to perform well (i.e. we expect that all examples actually belong to one of the 10 classes). The introduction hinted that since softmax strongly accentuates small differences between prediction probabilities, and does not take into account absolute activation of the final layer, CNNs can return high probabilities for examples that are not any of the expected classes. I expect GPs can also be made to exhibit such behavior. This is related strongly to the research area of open set classification~\cite{scheirer2013toward}. Using an ensemble including classifiers specifically trained on irrelevant data could lead to an effective rejection mechanism.
 
@@ -678,9 +683,9 @@ It was shown in Section~\ref{sec:adversarial} that kernels have varying adversar
 
 \section{Conclusion}
 
-This paper examined the utility of variance in classification. To do this, a CNN was trained on the MNIST dataset, and compared to various Gaussian processes on a variety of datasets. The main benefit of variance is interpretability: having access to an uncertainty in a prediction means consumers of classifications can make further judgements about results and don't need to accept predictions at face value; statistical tests can be used to make principled decisions about significant of data.
+This paper examined the utility of variance in classification. To do this, a CNN was trained on the MNIST dataset, and compared to various Gaussian processes on a variety of datasets. The main benefit of variance is interpretability: having access to an uncertainty in a prediction means consumers of classifications can make further judgements about results and don't need to accept predictions at face value; statistical tests can be used to make principled decisions about significance of data.
 
-This paper also presented the idea of merging predictions from the base CNN and the GP, using variance as a guide for choosing one decision of the other. A heuristic was presented which achieved slightly increased test set accuracy on non-adversarial examples. Overall however, a simple two-way merge does not yield impressive results, and a further investigation could be conducted into ensembling multiple different gaussian processes, also steered by prediction variances.
+This paper also presented the idea of merging predictions from the base CNN and the GP, using variance as a guide for choosing one decision of the other. A heuristic was presented which achieved slightly increased test set accuracy on non-adversarial examples. Overall however, a simple two-way merge does not yield impressive results, and further research could be conducted into ensembling multiple different gaussian processes.
 
 \subsection{Software and Data}
 

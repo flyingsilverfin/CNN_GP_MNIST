@@ -18,8 +18,6 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{krizhevsky2012imagenet}
 \citation{szegedy2013intriguing}
-\citation{lecun1998gradient}
-\citation{basu2017learning}
 \citation{bridle1990probabilistic}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:background}{{2}{1}{}{section.2}{}}
@@ -39,22 +37,22 @@
 \citation{chollet2015keras}
 \citation{GPflow2017}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:gp:basic}{{1}{2}{A simple one-dimensional GP regression. The dashed lines represent two standard deviations from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.\relax }{figure.caption.1}{}}
+\newlabel{fig:gp:basic}{{1}{2}{A simple 1-D GP regression. The dashed lines represent $\pm 2\sigma $ from the mean, and blue points are training data. Notice how the variance increases away from known datapoints.\relax }{figure.caption.1}{}}
 \newlabel{sec:background:adv}{{2.3}{2}{}{subsection.2.3}{}}
 \citation{rasmussen2006gaussian}
 \newlabel{sec:mnist}{{5}{3}{}{section.5}{}}
 \newlabel{sec:mnist:acc}{{5.1}{3}{}{subsection.5.1}{}}
 \newlabel{tab:model_accuracies}{{1}{3}{MNIST test set accuracy of of various models. The Hybrid model will be developed in Section~\ref {sec:mnist:hybridization}.\relax }{table.caption.2}{}}
 \newlabel{fig:mnist-variances}{{2}{3}{Distribution of Variances for both incorrect and correctly classified examples.\relax }{figure.caption.3}{}}
-\newlabel{tab:statsig}{{2}{4}{Statistically Significant Predictions on MNIST using 95\% confidence bounds for the \textit {combined} kernel.\relax }{table.caption.4}{}}
+\newlabel{tab:statsig}{{2}{3}{Statistically Significant Predictions on MNIST using 95\% confidence for the \textit {combined} kernel.\relax }{table.caption.4}{}}
 \newlabel{sec:svgp-variance}{{5.4}{4}{}{subsection.5.4}{}}
 \newlabel{fig:all_variances}{{3}{4}{Plotting class probability versus variance on the standard MNIST dataset. They are totally correlated and thus one completely determines the other.\relax }{figure.caption.5}{}}
 \newlabel{tab:misprediction}{{3}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.6}{}}
 \newlabel{tab:mispredictions}{{3}{4}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.6}{}}
 \newlabel{fig:venn}{{4}{4}{Overlap in misclassifications of the CNN and the \textit {combined} GP model.\relax }{figure.caption.7}{}}
+\newlabel{sec:mnist:hybridization}{{5.6}{4}{}{subsection.5.6}{}}
 \citation{basu2017learning}
 \newlabel{fig:difficult}{{5}{5}{An example of a truly difficult image that both models fail on. The green bar represents the true class, while the tallest red one is the predicted class.\relax }{figure.caption.8}{}}
-\newlabel{sec:mnist:hybridization}{{5.6}{5}{}{subsection.5.6}{}}
 \newlabel{sec:mnist:hybridization:criteria}{{5.6.1}{5}{}{subsubsection.5.6.1}{}}
 \newlabel{fig:mnist:mismatch}{{6}{5}{Examining cases of misclassifications. The left column corresponds to one of the 16 examples the CNN classified incorrectly, while the right column stems from the GP's incorrect classifications. With the right heuristic these case, and others, may be salvageable.\relax }{figure.caption.9}{}}
 \citation{papernot2017cleverhans}
@@ -63,7 +61,7 @@
 \newlabel{sec:adversarial}{{7}{6}{}{section.7}{}}
 \citation{Bradshaw2017}
 \newlabel{tab:adv:accuracies}{{5}{7}{Mean and Standard Deviation of probability of incorrect predicted classes for the \textit {combined} kernel GP and the CNN.\relax }{table.caption.13}{}}
-\newlabel{tab:adv_statsig}{{6}{7}{Statistically Significant Predictions on Perturbed MNIST using 95\% confidence bounds.\relax }{table.caption.14}{}}
+\newlabel{tab:adv_statsig}{{6}{7}{Statistically Significant Predictions on Perturbed MNIST using 95\% confidence.\relax }{table.caption.14}{}}
 \newlabel{fig:adv:epsilons}{{9}{7}{Classification Accuracies on FGSM attacked MNIST images across varying $\epsilon $\relax }{figure.caption.15}{}}
 \newlabel{sec:discussion}{{8}{7}{}{section.8}{}}
 \citation{scheirer2013toward}
